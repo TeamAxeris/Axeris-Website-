@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,9 +9,14 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 no-underline mb-4">
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-[#0a0a0a] text-[0.7rem] font-bold tracking-tight">
-                Ax
-              </div>
+              <Image
+                src="/logos/axeris-logo.png"
+                alt="Axeris"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-lg"
+                style={{ objectFit: "contain" }}
+              />
               <span className="text-[1.4rem] font-bold text-white tracking-[-0.5px]">Axeris</span>
             </Link>
             <p className="text-[0.85rem] text-white/50 max-w-[260px] leading-[1.6] mb-5">

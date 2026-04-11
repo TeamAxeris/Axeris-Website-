@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,9 +28,14 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-10 h-[72px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 no-underline">
-          <div className="w-8 h-8 bg-[#0a0a0a] rounded-lg flex items-center justify-center text-white text-[0.7rem] font-bold tracking-tight">
-            Ax
-          </div>
+          <Image
+            src="/logos/axeris-logo.png"
+            alt="Axeris"
+            width={32}
+            height={32}
+            className="w-8 h-8 rounded-lg"
+            style={{ objectFit: "contain" }}
+          />
           <span className="text-[1.4rem] font-bold text-[#0a0a0a] tracking-[-0.5px]" style={{ fontFamily: "var(--font-body)" }}>
             Axeris
           </span>
