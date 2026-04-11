@@ -26,7 +26,7 @@ export default function Team() {
               image: "/team/adan-eftekhari.jpg",
               role: "Life Sciences & Policy",
               school: "Harvard University",
-              field: "Biology & CS",
+              field: "Biology & Econ",
               linkedin: "https://www.linkedin.com/in/adan-eftekhari/",
             },
             {
@@ -42,7 +42,7 @@ export default function Team() {
               image: "/team/khartik-uppalapati.jpg",
               role: "Operations & Strategy",
               school: "University of Chicago",
-              field: "Econ & Biological Chemistry",
+              field: "CS, Econ, & Biological Chemistry",
               linkedin: "https://www.linkedin.com/in/khartik-uppalapati/",
             },
           ].map((member) => (
