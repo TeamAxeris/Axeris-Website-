@@ -22,15 +22,8 @@ export default function Team() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {[
             {
-              name: "Adan Eftekhari",
-              image: "/team/adan-eftekhari.jpg",
-              role: "Life Sciences & Policy",
-              school: "Harvard University",
-              field: "Biology & Econ",
-              linkedin: "https://www.linkedin.com/in/adan-eftekhari/",
-            },
-            {
               name: "Kareem Malhis",
+              title: "CPO",
               image: "/team/kareem-malhis.jpg",
               role: "Engineering",
               school: "Johns Hopkins University",
@@ -38,7 +31,17 @@ export default function Team() {
               linkedin: "https://www.linkedin.com/in/kareem-malhis/",
             },
             {
+              name: "Adan Eftekhari",
+              title: "CEO",
+              image: "/team/adan-eftekhari.jpg",
+              role: "Life Sciences & Policy",
+              school: "Harvard University",
+              field: "Biology & Econ",
+              linkedin: "https://www.linkedin.com/in/adan-eftekhari/",
+            },
+            {
               name: "Khartik Uppalapati",
+              title: "CTO",
               image: "/team/khartik-uppalapati.jpg",
               role: "Operations & Strategy",
               school: "University of Chicago",
@@ -57,6 +60,7 @@ export default function Team() {
                 />
               </div>
               <h4 className="text-[1.05rem] font-semibold text-[#0a0a0a] mb-1">{member.name}</h4>
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[1px] text-[#4f46e5] mb-2">{member.title}</p>
               {member.school && <p className="text-[0.88rem] text-[#737373] mb-1">{member.school}</p>}
               <p className="text-[0.82rem] text-[#737373] mb-3">{member.field}</p>
               <a
