@@ -21,17 +21,17 @@ export default function BuiltBy() {
           <Image
             src="/logos/uchicago.png"
             alt="University of Chicago"
-            width={160}
-            height={90}
-            className="h-[44px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+            width={85}
+            height={100}
+            className="h-[34px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
             style={{ objectFit: "contain" }}
           />
           <Image
             src="/logos/jhu.png"
             alt="Johns Hopkins University"
-            width={160}
-            height={90}
-            className="h-[44px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+            width={85}
+            height={100}
+            className="h-[34px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
             style={{ objectFit: "contain" }}
           />
         </div>
