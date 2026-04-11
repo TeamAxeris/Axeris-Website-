@@ -31,7 +31,7 @@ export default function BuiltBy() {
             alt="Johns Hopkins University"
             width={85}
             height={100}
-            className="h-[46px] w-[38px] opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+            className="h-[50px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
             style={{ objectFit: "contain" }}
           />
         </div>
