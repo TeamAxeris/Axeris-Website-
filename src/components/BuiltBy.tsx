@@ -9,31 +9,37 @@ export default function BuiltBy() {
         <span className="text-[0.75rem] font-medium uppercase tracking-[1.5px] text-[#d1d1d1]">
           Built by founders from
         </span>
-        <div className="flex items-center gap-10">
-          <Image
-            src="/logos/harvard-shield.png"
-            alt="Harvard University"
-            width={85}
-            height={100}
-            className="h-[34px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
-            style={{ objectFit: "contain" }}
-          />
-          <Image
-            src="/logos/uchicago.png"
-            alt="University of Chicago"
-            width={85}
-            height={100}
-            className="h-[34px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
-            style={{ objectFit: "contain" }}
-          />
-          <Image
-            src="/logos/jhu.png"
-            alt="Johns Hopkins University"
-            width={85}
-            height={100}
-            className="h-[34px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
-            style={{ objectFit: "contain" }}
-          />
+        <div className="flex items-center gap-8">
+          <div className="w-[44px] flex items-center justify-center">
+            <Image
+              src="/logos/harvard-shield.png"
+              alt="Harvard University"
+              width={85}
+              height={100}
+              className="h-[36px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+          <div className="w-[44px] flex items-center justify-center">
+            <Image
+              src="/logos/uchicago.png"
+              alt="University of Chicago"
+              width={85}
+              height={100}
+              className="h-[38px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+          <div className="w-[44px] flex items-center justify-center">
+            <Image
+              src="/logos/jhu.png"
+              alt="Johns Hopkins University"
+              width={85}
+              height={100}
+              className="h-[36px] w-auto opacity-85 grayscale hover:opacity-100 transition-all duration-300"
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
       </div>
     </div>
