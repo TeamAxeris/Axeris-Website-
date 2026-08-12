@@ -8,22 +8,38 @@ export function useReveal() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Arm the reveal system only once JS is confirmed running (see globals.css).
+    document.documentElement.classList.add("has-reveal");
+    const targets = Array.from(el.querySelectorAll<HTMLElement>(".reveal"));
+
+    // Fallback: if IntersectionObserver is unavailable, show everything.
+    if (typeof IntersectionObserver === "undefined") {
+      targets.forEach((t) => t.classList.add("visible"));
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      // Pre-trigger: reveal as content approaches, so nothing sits blank.
+      { threshold: 0, rootMargin: "0px 0px 15% 0px" }
     );
 
-    const targets = el.querySelectorAll(".reveal");
     targets.forEach((t) => observer.observe(t));
 
-    return () => observer.disconnect();
+    // Safety net: never leave content hidden longer than 1.2s.
+    const safety = setTimeout(() => targets.forEach((t) => t.classList.add("visible")), 1200);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(safety);
+    };
   }, []);
 
   return ref;

@@ -2,36 +2,28 @@
 
 import { useReveal } from "./useReveal";
 
+const stats = [
+  { value: "$528B", label: "spent on prescription drugs in the U.S. each year" },
+  { value: "$100B", label: "of that is wasted on avoidable, low-value scripts" },
+  { value: "6B+", label: "prescriptions written every single year" },
+  { value: "39", label: "prior authorizations per physician, per week" },
+];
+
 export default function Press() {
   const ref = useReveal();
 
   return (
-    <div ref={ref} className="bg-[#f8f8f8] py-[60px] px-10 border-y border-[#e4e4e4]">
-      <div className="max-w-[1280px] mx-auto text-center reveal">
-        <p className="text-[0.8rem] font-semibold uppercase tracking-[2px] text-[#737373] mb-8">
-          The Prescription Problem
-        </p>
-        <div className="flex items-center justify-center gap-12 flex-wrap">
-          {[
-            { value: "$528B", label: "Annual U.S. Drug Spend" },
-            { value: "$100B", label: "Wasted Annually" },
-            { value: "6B+", label: "Prescriptions Per Year" },
-            { value: "39/wk", label: "Prior Auths Per Doctor" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <span
-                className="block text-[2rem] font-normal text-[#0a0a0a] tracking-[-0.5px] mb-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {stat.value}
-              </span>
-              <span className="text-[0.78rem] text-[#737373] font-medium">
-                {stat.label}
-              </span>
+    <section ref={ref} className="pt-8 pb-[72px]">
+      <div className="container-wide">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+          {stats.map((s, i) => (
+            <div key={s.value} className={`reveal reveal-${i + 1} min-w-0`}>
+              <div className="num text-[2.5rem] sm:text-[3.6rem] text-[var(--ink)] mb-3">{s.value}</div>
+              <p className="text-[0.9rem] text-[var(--muted)] leading-[1.45] max-w-[200px]">{s.label}</p>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

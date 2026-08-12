@@ -1,40 +1,58 @@
 "use client";
 
+import Image from "next/image";
 import { useReveal } from "./useReveal";
+
+/* the PBM way, struck through and corrected in-line — the redline is the figure */
+const redlines = [
+  { old: "Paid on rebates and spread.", now: "Paid only on verified savings." },
+  { old: "Denies automatically.", now: "Flags to a human, with evidence." },
+  { old: "Reviewed months after payment.", now: "Caught before the claim is paid." },
+  { old: "Swapped by price.", now: "Swapped only for true equivalents." },
+];
+
+const BAND_BG = "#eae4d6";
 
 export default function Trust() {
   const ref = useReveal();
 
   return (
-    <section ref={ref} id="why-axeris" className="py-[100px] px-10 bg-white">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="reveal mb-12">
-          <span className="inline-block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[#4f46e5] mb-4">
-            Why Axeris
-          </span>
-          <h2 className="text-[2.8rem] leading-[1.15] text-[#0a0a0a] tracking-[-1px] font-normal mb-5" style={{ fontFamily: "var(--font-display)" }}>
-            We don&apos;t push cheap drugs. We stop unsafe ones.
-          </h2>
-          <p className="text-[1.05rem] text-[#737373] max-w-[600px] leading-[1.7]">
-            Axeris is the independent clinical and financial intelligence layer that payers have never had. Aligned with patients and payers — not rebates.
-          </p>
+    <section ref={ref} id="why-axeris" className="relative overflow-hidden py-[88px]" style={{ background: BAND_BG }}>
+      <div className="aurora" style={{ top: -220, right: "-6%", width: 620, height: 520, opacity: 0.35 }} />
+      <div className="container-wide relative z-[2]">
+        <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[16ch] mb-12">
+          We don&apos;t push cheap drugs. We stop unsafe ones.
+        </h2>
+
+        <div className="flex flex-col gap-6 max-w-[880px] mb-16">
+          {redlines.map((r, i) => (
+            <p key={r.old} className={`reveal reveal-${(i % 4) + 1} text-[1.3rem] sm:text-[1.65rem] leading-[1.45] tracking-[-0.015em]`}>
+              <span className="text-[var(--faint)] line-through"
+                    style={{ textDecorationColor: "rgba(220,75,69,0.6)", textDecorationThickness: "1.5px" }}>
+                {r.old}
+              </span>{" "}
+              <span className="text-[var(--ink)] font-medium">{r.now}</span>
+            </p>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: "🛡️", title: "Not a PBM", desc: "We don't make money on rebates or spread pricing. We're fully aligned with payer and patient value." },
-            { icon: "✋", title: "Not a denial tool", desc: "We flag for human review. Evidence-first, cost-second. Conservative thresholds. Clinically validated only." },
-            { icon: "⚡", title: "Proactive, not retrospective", desc: "Unlike MTM programs that review after the fact, we catch problems before the claim clears." },
-            { icon: "⚖️", title: "True equivalence required", desc: "Equal potency, bioavailability, formulation, titration, and clinical effectiveness. FDA Orange Book backed." },
-          ].map((card) => (
-            <div key={card.title} className="reveal p-8 bg-[#f8f8f8] rounded-[20px] border border-[#e4e4e4]">
-              <div className="w-14 h-14 bg-white rounded-[14px] flex items-center justify-center text-[1.5rem] mb-5 border border-[#e4e4e4]">
-                {card.icon}
-              </div>
-              <h4 className="text-[1rem] font-semibold text-[#0a0a0a] mb-2.5">{card.title}</h4>
-              <p className="text-[0.88rem] text-[#737373] leading-[1.6]">{card.desc}</p>
-            </div>
-          ))}
+        {/* quote, with the person attached */}
+        <div className="reveal flex items-start gap-5 max-w-[820px]">
+          <Image
+            src="/team/adan-eftekhari-2.jpg"
+            alt="Adan Eftekhari"
+            width={64}
+            height={64}
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover shrink-0"
+            style={{ objectPosition: "50% 18%", border: "1px solid rgba(20,18,12,0.14)" }}
+          />
+          <div>
+            <p className="text-[1.35rem] sm:text-[1.7rem] leading-[1.4] tracking-[-0.015em] text-[var(--ink)]">
+              &ldquo;Every flag ships with the evidence attached. That is the difference
+              between a denial tool and a decision you can defend.&rdquo;
+            </p>
+            <p className="text-[0.9rem] mt-4 text-[var(--muted)]">Adan Eftekhari, Chief Executive Officer</p>
+          </div>
         </div>
       </div>
     </section>

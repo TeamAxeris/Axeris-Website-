@@ -1,47 +1,67 @@
 "use client";
 
-import Link from "next/link";
 import { useReveal } from "./useReveal";
 
+/* problems as bold-lead statements, Trust-style */
 const problems = [
-  { title: "Clinically Inappropriate Prescribing", desc: "Drug doesn't match diagnosis, dose outside guidelines, dangerous combinations, duplicate therapy, and unsafe substitutions in titration-dependent patients.", emoji: "🩺", gradient: "linear-gradient(135deg, #1e293b, #334155)" },
-  { title: "Wasteful Drug Spending", desc: "Expensive brands where equivalent generics exist, second-line drugs used too early, repeated prescriptions without reassessment, and early refills.", emoji: "💸", gradient: "linear-gradient(135deg, #312e81, #4338ca)" },
-  { title: "Fraud, Abuse & Corruption", desc: "Prescribers writing far more controlled substances than peers, doctor shopping, pharmacy collusion, and fake diagnoses to unlock high-cost drugs.", emoji: "🔍", gradient: "linear-gradient(135deg, #064e3b, #065f46)" },
-  { title: "Prior Authorization Burden", desc: "39 prior auth requests per physician per week. Axeris reduces unnecessary PAs by catching problems earlier with better precision.", emoji: "📋", gradient: "linear-gradient(135deg, #78350f, #92400e)" },
+  { lead: "Inappropriate prescribing.", rest: "Wrong drug, unsafe dose, dangerous combinations." },
+  { lead: "Wasteful spending.", rest: "Costly brands where generics exist." },
+  { lead: "Fraud and abuse.", rest: "Doctor shopping, collusion, invented diagnoses." },
+  { lead: "Prior-auth burden.", rest: "39 requests per physician, per week." },
+];
+
+/* the same problems, shown as a live claims feed — illustrative numbers */
+const feed = [
+  { name: "Lisinopril 20 mg", note: "pays", amt: "$4", c: "var(--green)" },
+  { name: "Crestor 20 mg", note: "generic exists", amt: "$318 → $9", c: "var(--amber)" },
+  { name: "Oxycodone 30 mg", note: "third prescriber this month", amt: "held", c: "var(--red)" },
+  { name: "Duloxetine 60 mg", note: "pays", amt: "$16", c: "var(--green)" },
+  { name: "Humira 40 mg", note: "biosimilar is equal", amt: "$6,922 → $1,180", c: "var(--amber)" },
+  { name: "Atorvastatin 40 mg", note: "pays", amt: "$12", c: "var(--green)" },
 ];
 
 export default function Products() {
   const ref = useReveal();
 
   return (
-    <section ref={ref} id="problem" className="py-[100px] px-10 bg-[#f8f8f8]">
-      <div className="max-w-[1280px] mx-auto">
-        <span className="reveal inline-block text-[0.78rem] font-semibold uppercase tracking-[1.5px] text-[#4f46e5] mb-4">
-          Problems We Solve
-        </span>
-        <h2 className="reveal text-[2.8rem] leading-[1.15] text-[#0a0a0a] tracking-[-1px] font-normal mb-14" style={{ fontFamily: "var(--font-display)" }}>
-          What slips through today costs lives and billions.
+    <section ref={ref} id="problem" className="py-[72px]" style={{ background: "var(--bg-warm)" }}>
+      <div className="container-wide">
+        <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[16ch] mb-11">
+          What slips through costs lives. And billions.
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {problems.map((p) => (
-            <Link
-              key={p.title}
-              href="#"
-              className="reveal group bg-white rounded-[20px] overflow-hidden border border-[#e4e4e4] no-underline text-inherit flex flex-col hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:border-transparent transition-all duration-300"
-            >
-              <div
-                className="w-full h-[180px] flex items-center justify-center"
-                style={{ background: p.gradient }}
-              >
-                <span className="text-[2.5rem] opacity-60">{p.emoji}</span>
-              </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h4 className="text-[1.05rem] font-semibold text-[#0a0a0a] mb-2">{p.title}</h4>
-                <p className="text-[0.85rem] text-[#737373] leading-[1.6] flex-1">{p.desc}</p>
-              </div>
-            </Link>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-x-16 gap-y-12 items-start">
+          {/* the problems, plainly said */}
+          <div className="flex flex-col gap-5">
+            {problems.map((p, i) => (
+              <p key={p.lead} className={`reveal reveal-${(i % 4) + 1} text-[1.12rem] sm:text-[1.25rem] leading-[1.45] tracking-[-0.01em]`}>
+                <span className="text-[var(--ink)] font-medium">{p.lead}</span>{" "}
+                <span className="text-[var(--ink-soft)]">{p.rest}</span>
+              </p>
+            ))}
+          </div>
+
+          {/* the same problems, caught in the feed */}
+          <div className="reveal reveal-2 rounded-2xl overflow-hidden"
+               style={{ background: "var(--paper)", border: "1px solid var(--line)", boxShadow: "0 18px 50px rgba(20,18,12,0.07)" }}>
+            <div className="px-6 pt-5 pb-4">
+              <span className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-[var(--muted)]">Claims feed</span>
+            </div>
+            <div>
+              {feed.map((f) => (
+                <div key={f.name} className="flex items-center gap-3.5 px-6 py-[13px]" style={{ borderTop: "1px solid var(--line)" }}>
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: f.c }} />
+                  <span className="text-[0.94rem] text-[var(--ink)] whitespace-nowrap">{f.name}</span>
+                  <span className="text-[0.85rem] text-[var(--muted)] truncate">{f.note}</span>
+                  <span className="ml-auto num text-[0.92rem] text-[var(--ink-soft)] whitespace-nowrap">{f.amt}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-baseline justify-between px-6 py-4" style={{ borderTop: "1px solid var(--line)", background: "var(--bg)" }}>
+              <span className="text-[0.9rem] text-[var(--muted)]">Caught before payment</span>
+              <span className="num text-[1.35rem] text-[var(--ink)]">$6,051</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
