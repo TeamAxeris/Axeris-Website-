@@ -7,7 +7,7 @@ const nav = [
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },
   { label: "Live Demo", href: "https://proto2-mocha.vercel.app/" },
-  { label: "Contact", href: "mailto:info@axeris.ai?subject=Axeris" },
+  { label: "Contact", href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@axeris.ai&su=Axeris" },
 ];
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
             <p className="text-[0.95rem] text-[var(--ink)]">The clinical layer between prescribing and payment</p>
             <p className="text-[0.85rem] text-[var(--muted)] mt-1">&copy; {new Date().getFullYear()} Axeris. All rights reserved.</p>
           </div>
-          <Link href="mailto:info@axeris.ai" className="text-[0.9rem] text-[var(--ink)] no-underline border-b border-[var(--ink)] self-start pb-0.5 hover:text-[var(--blue)] hover:border-[var(--blue)] transition-colors">
+          <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=info@axeris.ai&su=Axeris" target="_blank" rel="noopener noreferrer" className="text-[0.9rem] text-[var(--ink)] no-underline border-b border-[var(--ink)] self-start pb-0.5 hover:text-[var(--blue)] hover:border-[var(--blue)] transition-colors">
             INFO@AXERIS.AI
           </Link>
         </div>

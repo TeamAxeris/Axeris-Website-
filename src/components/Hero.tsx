@@ -45,7 +45,7 @@ export default function Hero() {
           <Link href="https://proto2-mocha.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             Try Live Demo
           </Link>
-          <a href="mailto:info@axeris.ai?subject=Axeris" className="btn btn-ghost">Contact us</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@axeris.ai&su=Axeris" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Contact us</a>
         </div>
       </div>
     </section>

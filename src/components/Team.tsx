@@ -25,7 +25,11 @@ export default function Team() {
               <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden mb-6" style={{ background: "var(--bg-warm)" }}>
                 <Image src={m.image} alt={m.name} width={420} height={525}
                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                       style={i === 0 ? { objectPosition: "50% 14%", transform: "scale(1.45)", transformOrigin: "50% 24%" } : undefined} />
+                       style={
+                         i === 0 ? { objectPosition: "50% 4%", transform: "translateY(4%) scale(1.5)", transformOrigin: "50% 30%" }
+                         : i === 1 ? { transform: "scale(1.3)", transformOrigin: "50% 32%" }
+                         : undefined
+                       } />
               </div>
               <h3 className="text-[1.22rem] font-normal text-[var(--ink)] leading-tight mb-1 tracking-[-0.01em]">{m.name}</h3>
               <p className="text-[0.92rem] text-[var(--blue)] mb-3">{m.title}</p>
