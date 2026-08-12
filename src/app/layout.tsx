@@ -10,9 +10,24 @@ const geist = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://axeris-health.com"),
   title: "Axeris · Prescription Intelligence",
   description:
     "The independent clinical layer between prescribing and payment. Axeris catches unsafe and wasteful prescriptions before the claim clears.",
+  openGraph: {
+    title: "Axeris · Prescription Intelligence",
+    description:
+      "The independent clinical layer between prescribing and payment.",
+    url: "https://axeris-health.com",
+    siteName: "Axeris",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Axeris · Prescription Intelligence",
+    description:
+      "The independent clinical layer between prescribing and payment.",
+  },
 };
 
 export default function RootLayout({

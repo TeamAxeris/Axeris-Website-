@@ -44,8 +44,9 @@ export default function Products() {
           {/* the same problems, caught in the feed */}
           <div className="reveal reveal-2 rounded-2xl overflow-hidden"
                style={{ background: "var(--paper)", border: "1px solid var(--line)", boxShadow: "0 18px 50px rgba(20,18,12,0.07)" }}>
-            <div className="px-6 pt-5 pb-4">
+            <div className="flex items-baseline justify-between px-6 pt-5 pb-4">
               <span className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-[var(--muted)]">Claims feed</span>
+              <span className="text-[0.7rem] text-[var(--faint)]">illustrative</span>
             </div>
             <div>
               {feed.map((f) => (
