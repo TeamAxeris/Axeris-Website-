@@ -6,7 +6,7 @@ const nav = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },
-  { label: "Live Demo", href: "/console/tpa/dashboard" },
+  { label: "Live Demo", href: "/console/tpa/dashboard?demo=1" },
   { label: "Contact", href: "https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" },
 ];
 

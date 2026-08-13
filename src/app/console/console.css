@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Axeris Clinical Operations Console — Design System (UI/UX Pro Max) ──
+ * Style: Data-Dense Dashboard
+ * Mood: medical · clean · accessible · professional · healthcare · trustworthy
+ * Headings: Figtree · Body: Noto Sans · Mono: JetBrains Mono (tabular)
+ *
+ * Default = LIGHT mode. Dark mode opt-in only via .dark class on <html>
+ * (controlled by ThemeContext / "Dark" toggle in Sidebar). We do NOT use
+ * prefers-color-scheme auto-switch because it causes hardcoded Tailwind
+ * dark: classes to fight CSS variables and produce broken contrast.
+ */
+:root {
+  /* Surface */
+  --color-bg: #f6f4ef;            /* slate-50 — clean canvas */
+  --color-surface: #fbfaf6;        /* card */
+  --color-surface-2: #efece4;      /* nested */
+  --color-muted: #efece4;          /* row hover, subtle backgrounds */
+
+  /* Foreground (WCAG AA verified) */
+  --color-fg: #17140d;             /* slate-900 — body text (16.5:1) */
+  --color-fg-muted: #423d34;       /* slate-700 — secondary text (10.4:1) */
+  --color-fg-subtle: #5f5a50;      /* slate-600 — tertiary text (7.5:1) */
+
+  /* Brand */
+  --color-primary: #2f2fe6;        /* fiduciary blue */
+  --color-primary-hover: #2727c2;
+  --color-on-primary: #FFFFFF;
+  --color-secondary: #2f2fe6;      /* interactive blue (4.6:1 on white) */
+  --color-accent: #B45309;         /* clinical amber-700 (5.0:1 — WCAG AA) */
+
+  /* Borders */
+  --color-border: #e4dfd4;         /* slate-200 — clean rule */
+  --color-border-strong: #a8a196;  /* slate-400 */
+
+  /* Semantic — clinical status only (all WCAG AA on white) */
+  --color-ok: #047857;             /* emerald-700 — APPROVE (5.4:1) */
+  --color-warn: #92400E;           /* amber-800 — REVIEW (7.4:1) */
+  --color-alert: #991B1B;          /* red-800 — FLAG (8.2:1) */
+  --color-info: #2f2fe6;
+
+  /* Focus ring — matches primary */
+  --color-ring: #2f2fe6;
+}
+
+.dark {
+  --color-bg: #141210;
+  --color-surface: #1c1915;
+  --color-surface-2: #26221c;
+  --color-muted: #26221c;
+  --color-fg: #f4f2ec;
+  --color-fg-muted: #cfc9bd;
+  --color-fg-subtle: #a8a196;
+  --color-border: #2e2a23;
+  --color-border-strong: #423d34;
+  --color-primary: #6f74f3;
+  --color-on-primary: #141210;
+  --color-secondary: #a2a8fb;
+  --color-accent: #F59E0B;
+  --color-ok: #10B981;
+  --color-warn: #F59E0B;
+  --color-alert: #EF4444;
+}
+
+.console-shell {
+  font-family: var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: var(--font-geist), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.font-mono,
+code, pre, kbd, samp {
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-feature-settings: "tnum", "ss01";
+}
+
+/* Tabular numerals for any data column */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* When a DetailDrawer is open, hide the floating Copilot launcher so it
+ * doesn't block the drawer's footer action buttons. */
+body[data-drawer-open="true"] [data-copilot] {
+  display: none !important;
+}
+
+/* ── Dark-mode safety net ──────────────────────────────────────────────
+ * Some legacy pages (patients, providers, audit, interactions, formulary,
+ * prescriptions list, prior-auth, settings, analytics, etc.) were built
+ * before the design system landed and use raw `bg-white` / `text-gray-*`
+ * / `border-gray-*` Tailwind tokens with no `dark:` variant. Without an
+ * override they render as bright white islands on a dark canvas.
+ *
+ * These rules remap those tokens at runtime when the .dark class is on
+ * <html>. Pages that already declare explicit `dark:` variants are
+ * unaffected because Tailwind emits those rules later in the cascade
+ * with equal specificity, so they win.
+ */
+.dark .bg-white { background-color: #1c1915; }
+.dark .bg-gray-50 { background-color: rgba(20, 18, 16, 0.5); }
+.dark .bg-gray-100 { background-color: #26221c; }
+
+.dark .text-gray-900 { color: #f4f2ec; }
+.dark .text-gray-800 { color: #e6e2d8; }
+.dark .text-gray-700 { color: #cfc9bd; }
+.dark .text-gray-600 { color: #cfc9bd; }
+.dark .text-gray-500 { color: #a8a196; }
+.dark .text-gray-400 { color: #7c766c; }
+.dark .text-gray-300 { color: #5f5a50; }
+
+.dark .border-gray-200 { border-color: #2e2a23; }
+.dark .border-gray-100 { border-color: rgba(46, 42, 35, 0.6); }
+.dark .border-gray-300 { border-color: #423d34; }
+
+.dark .hover\:bg-gray-50:hover { background-color: rgba(46, 42, 35, 0.45); }
+.dark .hover\:bg-gray-100:hover { background-color: rgba(46, 42, 35, 0.7); }
+.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(46, 42, 35, 0.6); }
+
+/* Form inputs without explicit dark variants — light placeholder + text */
+.dark input.bg-white,
+.dark select.bg-white,
+.dark textarea.bg-white {
+  color: #f4f2ec;
+  background-color: #1c1915;
+}
+.dark input.bg-white::placeholder,
+.dark textarea.bg-white::placeholder {
+  color: #7c766c;
+}
+
+/* ── Custom Animations ── */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out both;
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ── Focus styles ── */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Print styles ── */
+@media print {
+  /* Hide everything non-essential */
+  .no-print,
+  nav,
+  button,
+  textarea,
+  [data-copilot],
+  [data-toast] {
+    display: none !important;
+  }
+
+  /* Hide the sidebar entirely */
+  .flex.h-screen > div:first-child {
+    display: none !important;
+  }
+
+  /* Hide the header bar (search, bell icon, avatar) */
+  header {
+    display: none !important;
+  }
+
+  /* Hide copilot panel */
+  [class*="copilot"],
+  [class*="Copilot"] {
+    display: none !important;
+  }
+
+  /* Reset layout — full width single column */
+  html, body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove flex layout constraints so content fills the page */
+  .flex.h-screen,
+  .flex.h-screen > *,
+  .flex-1.flex.flex-col,
+  main {
+    display: block !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  main {
+    padding: 0.5cm !important;
+  }
+
+  /* Force the 3-column grid to single column for print */
+  .grid.grid-cols-1.lg\:grid-cols-12 {
+    display: block !important;
+  }
+
+  .grid.grid-cols-1.lg\:grid-cols-12 > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 12pt !important;
+  }
+
+  /* Cards print nicely */
+  .bg-white.rounded-xl {
+    border: 1pt solid #ccc !important;
+    border-radius: 6pt !important;
+    padding: 12pt !important;
+    margin-bottom: 10pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  /* Ensure colored flag backgrounds print */
+  .bg-red-50,
+  .bg-yellow-50,
+  .bg-blue-50,
+  .bg-green-50 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Print header — inject a title at top */
+  main::before {
+    content: "AXERIS — Clinical Review Report";
+    display: block;
+    font-size: 16pt;
+    font-weight: 700;
+    text-align: center;
+    padding: 8pt 0 4pt;
+    border-bottom: 2pt solid #1e293b;
+    margin-bottom: 12pt;
+    color: #1e293b;
+  }
+
+  main::after {
+    content: "Generated by Axeris AI Clinical Decision Support — " attr(data-print-date) " — Prototype / Simulated Data Only";
+    display: block;
+    font-size: 8pt;
+    text-align: center;
+    color: #888;
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 1pt solid #ccc;
+  }
+
+  /* Hide animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Risk score bar should print */
+  .h-3.bg-gray-200.rounded-full {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Make links visible in print */
+  a {
+    color: #1e40af !important;
+    text-decoration: underline !important;
+  }
+
+  /* Page breaks */
+  h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Remove hover effects */
+  *:hover {
+    box-shadow: none !important;
+  }
+
+  /* Hide the "Back to queue" link */
+  a[class*="text-gray-500"]:has(svg) {
+    display: none !important;
+  }
+
+  /* Ensure overflow content is visible */
+  .overflow-hidden,
+  .overflow-y-auto,
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+
+  /* Truncated text should show fully */
+  .truncate {
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+ * CALM LAYER — retunes the whole console toward the Axeris marketing site:
+ * soft floating panels instead of a hard-bordered grid, gentler micro-type,
+ * calmer rhythm. Targets the repeated inline card class-combos so all 44
+ * pages inherit it without per-page edits.
+ * ════════════════════════════════════════════════════════════════════ */
+
+/* Cards: soft, rounded, and CLEARLY OUTLINED (a defined hairline, not a ghost)
+ * with a gentle lift. The earlier build made borders near-invisible, so panels
+ * read as undefined blobs — this restores a real, calm edge. */
+[class*="bg-white"][class*="border"][class*="rounded"] {
+  border-color: rgba(23, 20, 13, 0.11) !important;
+  box-shadow: 0 1px 2px rgba(23, 20, 13, 0.03), 0 10px 26px -18px rgba(23, 20, 13, 0.14);
+  border-radius: 14px;
+}
+.dark [class*="bg-white"][class*="border"][class*="rounded"] {
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+/* small controls stay crisp, not card-like */
+button[class*="rounded"], input, select, textarea { box-shadow: none; }
+button[class*="bg-white"][class*="border"], a[class*="bg-white"][class*="border"][class*="px-"] {
+  border-radius: 9px !important;
+  box-shadow: none !important;
+  border-color: rgba(23, 20, 13, 0.14) !important;
+}
+
+/* Uppercase eyebrow labels: calmer weight + tracking, Polarity style */
+.uppercase { letter-spacing: 0.11em; font-weight: 500; }
+
+/* Smooth page-enter */
+main > div { animation: fade-in 0.3s ease both; }
+
+/* Decision summaries use a quiet brand-tinted field so they read as a
+ * connected system, not another generic white card in the page grid. */
+.decision-stack {
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  border: 1px solid rgba(47, 47, 230, 0.14);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(79, 195, 232, 0.11), transparent 30%),
+    linear-gradient(135deg, rgba(47, 47, 230, 0.055), rgba(251, 250, 246, 0.88) 46%);
+}
+.dark .decision-stack {
+  border-color: rgba(111, 116, 243, 0.2);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(79, 195, 232, 0.08), transparent 30%),
+    linear-gradient(135deg, rgba(111, 116, 243, 0.1), rgba(28, 25, 21, 0.9) 46%);
+}
+
+/* Chart-heavy pages should never animate every nested card on navigation;
+ * a single page fade is enough and avoids a sluggish compositing burst. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
