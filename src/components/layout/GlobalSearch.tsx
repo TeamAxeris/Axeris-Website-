@@ -103,7 +103,7 @@ export default function GlobalSearch() {
     : [];
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative min-w-0">
       <div className="relative">
         <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
         <input
@@ -113,7 +113,7 @@ export default function GlobalSearch() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => { if (results && results.total > 0) setOpen(true); }}
           placeholder="Search patients, drugs, providers... (Ctrl+K)"
-          className="w-[min(20rem,calc(100vw-5rem))] rounded-lg border border-gray-300 py-2 pl-10 pr-10 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-600"
+          className="w-full min-w-0 rounded-lg border border-gray-300 py-2 pl-10 pr-10 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-600 lg:w-80"
         />
         {loading && (
           <Loader2 className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 animate-spin" />
