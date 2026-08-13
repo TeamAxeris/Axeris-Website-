@@ -28,7 +28,7 @@ export default function ModeBar() {
 
   return (
     <div className="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
-      <div className="flex items-center px-4 py-2 gap-4">
+      <div className="flex items-center gap-3 px-3 py-2 sm:px-4">
         {/* Mode pill */}
         <div className="relative" ref={ref}>
           <button
@@ -36,12 +36,13 @@ export default function ModeBar() {
             className="flex items-center gap-2 px-3 py-1 rounded text-[12px] font-semibold border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200"
           >
             {mode === "TPA" ? <Building2 className="w-3.5 h-3.5" /> : <Zap className="w-3.5 h-3.5" />}
-            <span>{mode === "TPA" ? "TPA · Plan Sponsor" : "PBA · Real-Time Adjudication"}</span>
+            <span className="hidden sm:inline">{mode === "TPA" ? "TPA · Plan Sponsor" : "PBA · Real-Time Adjudication"}</span>
+            <span className="sm:hidden">{mode}</span>
             <ChevronDown className="w-3 h-3 text-slate-400" />
           </button>
 
           {open && (
-            <div className="absolute top-full left-0 mt-1 w-[420px] bg-white dark:bg-slate-900 rounded-md border border-slate-200 dark:border-slate-700 shadow-lg z-50">
+            <div className="absolute left-0 top-full z-50 mt-1 w-[min(420px,calc(100vw-1.5rem))] rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-900">
               <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-700 text-[10px] font-semibold uppercase tracking-wider text-slate-500">
                 Switch Operating Mode
               </div>
@@ -65,7 +66,7 @@ export default function ModeBar() {
                           {active && <span className="text-[9px] uppercase tracking-wider text-blue-600 dark:text-blue-400 font-bold">Active</span>}
                         </div>
                         <p className="text-[11px] text-slate-500 mt-0.5">{cfg.shortDesc}</p>
-                        <div className="flex gap-3 mt-1.5 text-[10px] text-slate-500">
+                        <div className="mt-1.5 flex flex-col gap-1 text-[10px] text-slate-500 sm:flex-row sm:gap-3">
                           <span><strong className="text-slate-700 dark:text-slate-300">Audience:</strong> {cfg.primaryAudience}</span>
                           <span><strong className="text-slate-700 dark:text-slate-300">Latency:</strong> {cfg.latency}</span>
                         </div>

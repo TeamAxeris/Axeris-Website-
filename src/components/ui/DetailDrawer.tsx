@@ -34,13 +34,13 @@ export function DetailDrawer({
   }, [open, onClose]);
 
   if (!open) return null;
-  const w = width === "narrow" ? "w-[520px]" : "w-[760px]";
+  const w = width === "narrow" ? "w-full sm:w-[520px]" : "w-full sm:w-[min(760px,92vw)]";
 
   return (
     <>
       <div className="fixed inset-0 z-40 backdrop-blur-[2px]" style={{ backgroundColor: "rgba(15, 23, 42, 0.45)" }} onClick={onClose} />
       <aside className={`fixed right-0 top-0 ${w} h-screen bg-clinical-surface border-l border-clinical-border shadow-2xl z-50 flex flex-col`}>
-        <div className="flex items-start justify-between px-6 py-5 border-b border-clinical-border">
+        <div className="flex items-start justify-between px-4 py-4 sm:px-6 sm:py-5 border-b border-clinical-border">
           <div className="flex-1 min-w-0">
             <h2 className="text-[18px] font-bold font-heading tracking-tight text-clinical-fg">{title}</h2>
             {subtitle && <p className="text-[13.5px] text-clinical-fg-muted mt-1">{subtitle}</p>}
@@ -49,9 +49,9 @@ export function DetailDrawer({
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
+        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-5">{children}</div>
         {actions && (
-          <div className="border-t border-clinical-border px-6 py-4 bg-clinical-surface-2 flex items-center justify-end gap-2">
+          <div className="border-t border-clinical-border px-4 py-3 sm:px-6 sm:py-4 bg-clinical-surface-2 flex flex-wrap items-center justify-end gap-2">
             {actions}
           </div>
         )}

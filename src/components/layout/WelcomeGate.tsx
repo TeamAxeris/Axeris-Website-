@@ -36,7 +36,10 @@ export default function WelcomeGate() {
   useEffect(() => {
     if (phase !== "tour") return;
     const measure = () => {
-      const el = document.querySelector(STEPS[step].selector);
+      const el = Array.from(document.querySelectorAll(STEPS[step].selector)).find((candidate) => {
+        const bounds = candidate.getBoundingClientRect();
+        return bounds.width > 0 && bounds.height > 0;
+      });
       if (el) { el.scrollIntoView({ block: "center", behavior: "smooth" }); setTimeout(() => setRect(el.getBoundingClientRect()), 260); }
       else setRect(null);
     };
