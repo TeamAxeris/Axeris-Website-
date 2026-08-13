@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import clsx from "clsx";
@@ -57,14 +57,6 @@ export default function PBAFormularyMgmtPage() {
         subtitle="Plan formulary tier assignments · prior authorization · step therapy · quantity limits"
         meta={<DataSourceList sources={["NADAC", "RxNorm", "DailyMed"]} />}
       />
-      <div className="mb-3">
-        <StatRow items={[
-          { label: "Total Drugs", value: data.total_drugs },
-          { label: "PA Required", value: data.pa_required_count, severity: "warn" },
-          { label: "Step Therapy", value: data.step_therapy_count },
-          ...data.tier_summary.map((t: any) => ({ label: `Tier ${t.tier}`, value: t.count })),
-        ]} />
-      </div>
       <div className="mb-5"><PbaFormularyOrbit data={data} /></div>
 
       <div className="mb-3 flex items-center gap-2">

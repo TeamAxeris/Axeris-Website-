@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { TableSkeleton } from "@/components/ui/Skeleton";
@@ -131,16 +131,6 @@ export default function PBASiteOfCarePage() {
         subtitle="Specialty IV infusions billed at hospital outpatient (HOPD) cost ~110% more than home/office · same drug, matched outcomes (JMCP 2025, up to 57% employer savings)."
         meta={<DataSourceList sources={["Truveta", "NADAC", "Internal"]} />}
       />
-
-      <div className="mb-3">
-        <StatRow items={[
-          { label: "Eligible Members", value: summary.eligible_members ?? 0, sub: "Clinic-infused biologics with ≥ $100 savings/infusion" },
-          { label: "HOPD Premium", value: `${Math.round(summary.hopd_premium_pct ?? 0)}%`, sub: "Facility markup vs home/office", severity: "alert" },
-          { label: "Annualized Savings", value: fmtUsd(summary.annualized_savings_usd ?? 0), sub: "All eligible + redirected", severity: "ok" },
-          { label: "Avg / Member", value: fmtUsd(summary.avg_savings_per_member_usd ?? 0), sub: "Per redirected member / yr" },
-          { label: "Redirected", value: summary.redirected ?? 0, sub: "Persisted to audit trail" },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaSiteOfCareDumbbell items={data.items} /></div>
 

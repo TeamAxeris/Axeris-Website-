@@ -43,9 +43,9 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="https://proto2-mocha.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary !py-2.5 !px-5 !text-[0.88rem]">
+          <a href="/console/tpa/dashboard" className="btn btn-primary !py-2.5 !px-5 !text-[0.88rem]">
             Try Live Demo
-          </Link>
+          </a>
         </div>
 
         <button className="lg:hidden p-2 bg-transparent border-none cursor-pointer" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
@@ -60,7 +60,7 @@ export default function Navbar() {
           {links.map((l) => (
             <Link key={l.label} href={l.href} onClick={() => setMobileOpen(false)} className="block text-[1rem] text-[var(--ink-soft)] no-underline">{l.label}</Link>
           ))}
-          <Link href="https://proto2-mocha.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-2">Try Live Demo</Link>
+          <a href="/console/tpa/dashboard" className="btn btn-primary mt-2">Try Live Demo</a>
         </div>
       )}
     </nav>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { TableSkeleton } from "@/components/ui/Skeleton";
@@ -129,15 +129,6 @@ export default function PBASavingsPage() {
         subtitle="Cost-avoidance worklist · therapeutic interchange, generic substitution, and biosimilar conversion, ranked by annualized savings."
         meta={<DataSourceList sources={["Kythera", "Truveta", "NADAC"]} />}
       />
-
-      <div className="mb-3">
-        <StatRow items={[
-          { label: "Identified / yr", value: fmtUsd(data.identified_annualized_usd), sub: "Annualized, all open + converted", severity: "ok" },
-          { label: "Realized / yr", value: fmtUsd(data.realized_annualized_usd), sub: "Converted by prescriber agreement", severity: "ok" },
-          { label: "Opportunities", value: data.opportunity_count, sub: "≥ $25 savings per fill" },
-          { label: "Converted", value: data.converted_count, sub: "Persisted to audit trail" },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaSavingsPortfolio data={data} /></div>
 

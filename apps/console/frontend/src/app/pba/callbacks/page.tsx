@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { TableSkeleton } from "@/components/ui/Skeleton";
@@ -88,8 +88,6 @@ export default function PBACallbacksPage() {
     }
   };
 
-  const high = items.filter(i => i.callback_priority === "high").length;
-
   const columns: Column<Callback>[] = [
     { key: "priority", header: "Priority", width: "90px",
       render: (r) => <span className={clsx("text-[11px] px-2 py-0.5 rounded font-bold uppercase border",
@@ -126,15 +124,6 @@ export default function PBACallbacksPage() {
         subtitle="Soft-edit transactions awaiting prescriber outreach. Pharmacists send secure messages or fax · they don't make phone calls."
         meta={<DataSourceList sources={["Truveta", "NPPES"]} />}
       />
-
-      <div className="mb-4">
-        <StatRow items={[
-          { label: "Total Callbacks", value: items.length },
-          { label: "High Priority", value: high, severity: "alert" },
-          { label: "Standard", value: items.length - high, severity: "warn" },
-          { label: "Avg Resolution", value: "4.2h", sub: "via secure portal" },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaCallbackLanes items={items} /></div>
 

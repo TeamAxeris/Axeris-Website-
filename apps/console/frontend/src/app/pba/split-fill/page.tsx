@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { TableSkeleton } from "@/components/ui/Skeleton";
@@ -116,16 +116,6 @@ export default function PBASplitFillPage() {
         subtitle="15-day first fills on specialty & oral-oncology new starts · 34% discontinue early; stop paying for the unused half (JCO Oncology Practice)."
         meta={<DataSourceList sources={["Truveta", "NADAC", "Internal"]} />}
       />
-
-      <div className="mb-3">
-        <StatRow items={[
-          { label: "Eligible New Starts", value: data.summary.eligible_new_starts, sub: "Specialty & oral-oncology, first fill" },
-          { label: "Enrolled", value: data.summary.enrolled, sub: "15-day first dispense active", severity: "ok" },
-          { label: "Waste at Risk", value: fmtUsd(data.summary.waste_at_risk_usd), sub: "Full-fill cost exposed to early stop", severity: "alert" },
-          { label: "Expected Avoided", value: fmtUsd(data.summary.expected_waste_avoided_usd), sub: "34% early-discontinuation rate applied", severity: "ok" },
-          { label: "Benchmark", value: fmtUsd(data.summary.published_benchmark_per_member_usd), sub: "Per enrolled member (JCO Oncology Practice)" },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaSplitFillShield summary={data.summary} /></div>
 

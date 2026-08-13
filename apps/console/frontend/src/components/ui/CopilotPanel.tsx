@@ -204,7 +204,7 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
       <button
         onClick={() => setIsOpen(true)}
         data-copilot
-        className="fixed bottom-5 right-5 z-50 flex h-[58px] w-[58px] items-center justify-center rounded-[20px] border border-white/30 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] group"
+        className="fixed bottom-5 right-5 z-50 hidden h-[58px] w-[58px] items-center justify-center rounded-[20px] border border-white/30 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] md:flex group"
         style={{
           background: "linear-gradient(145deg, #4338ca 0%, #7c3aed 52%, #0891b2 100%)",
           boxShadow: "0 20px 44px -14px rgba(79,70,229,.78), 0 5px 16px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.32)",

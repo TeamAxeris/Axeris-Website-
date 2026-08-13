@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
 import Link from "next/link";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import clsx from "clsx";
@@ -76,15 +76,6 @@ export default function PBAMemberSafetyPage() {
         subtitle="Members with active critical-severity prescription blocks. Triggers Member Safety Officer review and care management outreach."
         meta={<DataSourceList sources={["Truveta"]} />}
       />
-
-      <div className="mb-4">
-        <StatRow items={[
-          { label: "Total Members", value: data.total },
-          { label: "P1 Critical", value: data.p1_critical, severity: "alert" },
-          { label: "P2 High", value: data.p2_high, severity: "warn" },
-          { label: "P3 Standard", value: data.p3_standard },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaSafetyTriage data={data} /></div>
 

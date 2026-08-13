@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { PbaNetworkQuadrant } from "@/components/dashboard/PbaCharts";
@@ -70,13 +70,6 @@ export default function PBAPharmacyNetworkPage() {
         subtitle={`${data.active} of ${data.total} pharmacies active in network`}
         meta={<DataSourceList sources={["Kythera", "NPPES"]} />}
       />
-      <div className="mb-4">
-        <StatRow items={[
-          { label: "Total Network", value: data.total },
-          { label: "Active", value: data.active, severity: "ok" },
-          { label: "Under Review", value: data.total - data.active, severity: "warn" },
-        ]} />
-      </div>
       <div className="mb-5"><PbaNetworkQuadrant items={data.items} /></div>
 
       <DataTable columns={columns} rows={data.items} rowKey={(p) => p.pharmacy_id} onRowClick={(p) => setSelected(p)} />

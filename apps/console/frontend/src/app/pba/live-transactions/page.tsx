@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import clsx from "clsx";
@@ -89,14 +89,6 @@ export default function PBALiveTransactionsPage() {
           </div>
         }
       />
-
-      <div className="mb-4">
-        <StatRow items={[
-          { label: "Paid", value: data.paid, sub: "Adjudicated to plan", severity: "ok" },
-          { label: "Soft Edit", value: data.soft_edits, sub: "Pharmacist callback (PR)", severity: "warn" },
-          { label: "Reject", value: data.rejects, sub: "Pre-dispense block", severity: "alert" },
-        ]} />
-      </div>
 
       <div className="mb-5">
         <PbaRealtimePulse

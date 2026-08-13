@@ -31,7 +31,7 @@ function AuthGate({ children }: { children: React.ReactNode }) {
                 ultra-wide screens so a 4K monitor doesn't sprawl tables
                 across 2400px of pixels. Per-page max-w wrappers were
                 removed to avoid double-capping at 1400px. */}
-            <div className="mx-auto max-w-[1440px] px-6 sm:px-10 py-9">
+            <div className="mx-auto max-w-[1440px] px-5 py-9 pb-28 sm:pl-10 sm:pr-24">
               {children}
             </div>
           </main>

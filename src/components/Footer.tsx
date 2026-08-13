@@ -6,7 +6,7 @@ const nav = [
   { label: "How it works", href: "#how-it-works" },
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },
-  { label: "Live Demo", href: "https://proto2-mocha.vercel.app/" },
+  { label: "Live Demo", href: "/console/tpa/dashboard" },
   { label: "Contact", href: "https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" },
 ];
 
@@ -45,9 +45,9 @@ export default function Footer() {
         </Link>
         <div className="flex items-center gap-6 flex-wrap justify-center">
           {nav.map((n) => (
-            <Link key={n.label} href={n.href} target={n.href.startsWith("http") ? "_blank" : undefined} rel={n.href.startsWith("http") ? "noopener noreferrer" : undefined} className="text-[0.9rem] text-[var(--ink-soft)] hover:text-[var(--ink)] no-underline transition-colors">
+            <a key={n.label} href={n.href} target={n.href.startsWith("http") ? "_blank" : undefined} rel={n.href.startsWith("http") ? "noopener noreferrer" : undefined} className="text-[0.9rem] text-[var(--ink-soft)] hover:text-[var(--ink)] no-underline transition-colors">
               {n.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>

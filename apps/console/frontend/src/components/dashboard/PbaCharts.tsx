@@ -5,15 +5,15 @@ import {
   Line, Pie, PieChart, ReferenceLine, ResponsiveContainer, Scatter,
   ScatterChart, Tooltip, XAxis, YAxis,
 } from "recharts";
-import { ArrowDownRight, ArrowRight, CheckCircle2, Clock3, Radio, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowDownRight, ArrowRight, Clock3, ShieldCheck } from "lucide-react";
 
 const money = (n: number) => n >= 1_000_000 ? `$${(n / 1_000_000).toFixed(1)}m` : n >= 1_000 ? `$${Math.round(n / 1_000)}k` : `$${Math.round(n)}`;
 const colors = ["#4f46e5", "#14b8a6", "#f59e0b", "#f43f5e", "#8b5cf6"];
 
-function Frame({ eyebrow, title, note, children, className = "" }: { eyebrow: string; title: string; note?: string; children: React.ReactNode; className?: string }) {
+function Frame({ eyebrow: _eyebrow, title, note, children, className = "" }: { eyebrow: string; title: string; note?: string; children: React.ReactNode; className?: string }) {
   return <section className={`overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-[0_18px_55px_-38px_rgba(15,23,42,.55)] dark:border-slate-700 dark:bg-slate-900 ${className}`}>
     <div className="flex items-start justify-between gap-4 px-5 pt-5">
-      <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-indigo-500">{eyebrow}</p><h2 className="mt-1 text-[17px] font-semibold tracking-tight text-slate-950 dark:text-white">{title}</h2></div>
+      <div><h2 className="text-[17px] font-semibold tracking-tight text-slate-950 dark:text-white">{title}</h2></div>
       {note && <p className="max-w-[260px] text-right text-[11px] leading-4 text-slate-500 dark:text-slate-400">{note}</p>}
     </div>
     <div className="p-5 pt-4">{children}</div>
@@ -104,42 +104,5 @@ export function PbaDashboardHero({ data }: { data:any }) {
       </div>
     </div>
     <div className="mt-5 h-64"><ResponsiveContainer><AreaChart data={pulse}><defs><linearGradient id="heroA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#6366f1" stopOpacity=".46"/><stop offset="1" stopColor="#6366f1" stopOpacity="0"/></linearGradient></defs><CartesianGrid vertical={false} stroke="#e2e8f0" strokeDasharray="3 4"/><XAxis hide/><YAxis hide/><Tooltip content={<Tip/>}/><Area type="monotone" dataKey="claims" name="Claims" stroke="#4f46e5" strokeWidth={3} fill="url(#heroA)"/></AreaChart></ResponsiveContainer></div>
-  </section>;
-}
-
-export function PbaAdjudicationRail({ latency, callbacks, stops }: { latency:number; callbacks:number; stops:number }) {
-  const stages = [
-    { n:"01", label:"Pharmacy", detail:"Claim received", icon:Radio },
-    { n:"02", label:"Benefit context", detail:"Member + formulary", icon:Sparkles },
-  ];
-  const outcomes = [
-    { label:"Dispense", detail:"Cleared instantly", tone:"border-emerald-400/30 bg-emerald-400/10 text-emerald-300", dot:"bg-emerald-400" },
-    { label:"Review", detail:`${callbacks} callbacks`, tone:"border-amber-400/30 bg-amber-400/10 text-amber-300", dot:"bg-amber-400" },
-    { label:"Stop", detail:`${stops} this hour`, tone:"border-rose-400/30 bg-rose-400/10 text-rose-300", dot:"bg-rose-400" },
-  ];
-  return <section className="relative overflow-hidden rounded-[30px] border border-indigo-300/20 bg-[#10111b] px-5 py-6 text-white shadow-[0_28px_80px_-42px_rgba(49,46,129,.85)] md:px-7 md:py-7">
-    <div className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full bg-indigo-600/20 blur-3xl"/>
-    <div className="pointer-events-none absolute -right-12 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl"/>
-    <div className="relative flex flex-col justify-between gap-3 border-b border-white/10 pb-5 md:flex-row md:items-end">
-      <div><p className="text-[10px] font-bold uppercase tracking-[.24em] text-indigo-300">The decision window</p><h2 className="mt-1 text-2xl font-semibold tracking-tight">A claim, checked before dispense.</h2><p className="mt-1 text-xs text-slate-400">One continuous pass from pharmacy to a clear, auditable outcome.</p></div>
-      <div className="flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-300"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400"/>{latency}ms average response</div>
-    </div>
-
-    <div className="relative mt-6 grid gap-3 lg:grid-cols-[.8fr_28px_.8fr_28px_1.35fr_28px_1fr] lg:items-stretch">
-      {stages.map((stage,i)=>{const Icon=stage.icon;return <div key={stage.n} className="contents"><div className="rounded-2xl border border-white/10 bg-white/[.055] p-4 backdrop-blur"><div className="flex items-center justify-between"><span className="text-[10px] font-bold tracking-[.18em] text-slate-500">{stage.n}</span><Icon className="h-4 w-4 text-slate-400"/></div><div className="mt-7 text-sm font-semibold">{stage.label}</div><div className="mt-0.5 text-[11px] text-slate-400">{stage.detail}</div></div><div className="hidden place-content-center lg:grid"><ArrowRight className="h-4 w-4 text-indigo-400"/></div></div>})}
-
-      <div className="relative overflow-hidden rounded-[22px] border border-indigo-300/35 bg-gradient-to-br from-indigo-600 via-violet-600 to-blue-600 p-[1px] shadow-[0_20px_55px_-24px_rgba(99,102,241,.9)]">
-        <div className="h-full rounded-[21px] bg-[#17182b]/80 p-5 backdrop-blur-xl">
-          <div className="flex items-center justify-between"><span className="rounded-full bg-white/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[.18em] text-indigo-200">Axeris decision core</span><Zap className="h-4 w-4 fill-cyan-300 text-cyan-300"/></div>
-          <div className="mt-5 flex items-end justify-between gap-3"><div><div className="text-3xl font-semibold tabular-nums">24</div><div className="text-[11px] text-indigo-200">checks in one pass</div></div><div className="text-right"><div className="text-xl font-semibold tabular-nums">{latency}<span className="text-xs text-indigo-200">ms</span></div><div className="text-[10px] text-indigo-200">average</div></div></div>
-          <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-white to-indigo-200" style={{width:`${Math.min(100,Math.max(20,latency/2))}%`}}/></div>
-        </div>
-      </div>
-
-      <div className="hidden place-content-center lg:grid"><ArrowRight className="h-4 w-4 text-indigo-400"/></div>
-      <div className="grid gap-2">{outcomes.map(out=><div key={out.label} className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 ${out.tone}`}><span className={`h-2 w-2 rounded-full ${out.dot}`}/><div className="flex-1"><div className="text-xs font-semibold">{out.label}</div><div className="text-[10px] text-slate-400">{out.detail}</div></div></div>)}</div>
-    </div>
-
-    <div className="relative mt-5 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/10 pt-4 text-[10px] text-slate-400"><span>Inline with the pharmacy transaction</span><span>Clinical + benefit context together</span><span>Every decision recorded</span></div>
   </section>;
 }

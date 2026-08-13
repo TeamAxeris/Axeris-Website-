@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { demoFetch, invalidate } from "@/lib/demoFetch";
-import { DataTable, PageHeader, StatRow, Column } from "@/components/ui/DataTable";
+import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DetailDrawer, FieldGroup, Field } from "@/components/ui/DetailDrawer";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { TableSkeleton } from "@/components/ui/Skeleton";
@@ -123,16 +123,6 @@ export default function PBAMailOrderPage() {
         subtitle="Chronic maintenance drugs on 30-day retail fills waste dispensing fees and lower adherence · convert to 90-day mail order."
         meta={<DataSourceList sources={["Kythera", "NADAC", "Internal"]} />}
       />
-
-      <div className="mb-3">
-        <StatRow items={[
-          { label: "Eligible Fills", value: data.summary.eligible_fills, sub: "Chronic maintenance on ≤34-day retail fills" },
-          { label: "Members Affected", value: data.summary.members_affected, sub: "Distinct members with a convertible fill" },
-          { label: "Annual Savings", value: fmtUsd(data.summary.annual_savings_usd), sub: "If all eligible fills convert", severity: "ok" },
-          { label: "Converted", value: data.summary.converted, sub: `${fmtUsd(data.summary.realized_savings_usd)} realized savings` },
-          { label: "Retail Dispense Fee", value: fmtUsd(data.summary.retail_dispense_fee_usd), sub: "NCPDP national avg per fill" },
-        ]} />
-      </div>
 
       <div className="mb-5"><PbaMailOrderFunnel summary={data.summary} items={data.items} /></div>
 

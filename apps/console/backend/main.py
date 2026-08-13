@@ -10,15 +10,13 @@ from routers import copilot, v8, tpa, pba, data_sources, public_apis, ml_engine_
 from config import API_V1_PREFIX
 
 
-def _train_models_background():
-    """Train the sklearn models off the request path. The server starts
-    serving immediately; model-backed endpoints report trained=false until
-    this thread finishes (they all handle that state gracefully)."""
+def _train_models_local():
+    """Train every bundled model locally before the API accepts traffic."""
     try:
         from engines import ml_models
         status = ml_models.train_models()
         if status.get("trained"):
-            print(f"[Axeris] ML models trained (background): xgboost={status['models']['xgboost']['n_training_samples']} "
+            print(f"[Axeris] Local ML models ready: xgboost={status['models']['xgboost']['n_training_samples']} "
                   f"samples, lightgbm={status['models']['lightgbm']['n_training_samples']} samples, "
                   f"isolation_forest={status['models']['isolation_forest']['n_training_samples']} samples, "
                   f"dbscan_clusters={status['models']['dbscan']['n_clusters_found']}, "
@@ -32,18 +30,15 @@ def _train_models_background():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: create tables + seed (blocking — endpoints need data),
-    # then train ML models in a background thread (non-blocking — the
-    # training pass previously held the whole API offline for its duration,
-    # which read as an "insanely long" demo start).
+    # Startup is deterministic: local data and every bundled model are ready
+    # before the API begins serving the demo.
     Base.metadata.create_all(bind=engine)
     from database.seed import seed_if_empty
     seed_if_empty()
     # Capture the event loop so threadpool request handlers can schedule
     # WebSocket broadcasts safely (see routers.websocket.notify_threadsafe).
     ws_router.capture_main_loop()
-    import threading
-    threading.Thread(target=_train_models_background, name="ml-train", daemon=True).start()
+    _train_models_local()
     yield
     # Shutdown
 
@@ -62,6 +57,8 @@ if not _allowed_origins:
     # Demo defaults — explicit allow-list per security review
     _allowed_origins = [
         "http://localhost:3000",
+        "http://localhost:3001",
+        "http://localhost:3002",
         "https://proto2-mocha.vercel.app",
     ]
 

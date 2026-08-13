@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:site": "next dev -p 3002",
+    "dev:console": "AXERIS_CONSOLE_BASE_PATH=/console npm --prefix apps/console/frontend run dev -- --port 3001",
+    "dev:api": "cd apps/console/backend && python3 -m uvicorn main:app --reload --port 8000",
+    "dev:all": "concurrently -k -n SITE,CONSOLE,API -c blue,magenta,green \"npm run dev:site\" \"npm run dev:console\" \"npm run dev:api\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,6 +18,7 @@
     "next": "14.2.35"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
