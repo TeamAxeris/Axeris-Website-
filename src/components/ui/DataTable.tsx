@@ -35,7 +35,7 @@ export function DataTable<T>({
   return (
     <div className="bg-clinical-surface border border-clinical-border rounded-md overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[720px]">
           <thead className="bg-clinical-surface-2 border-b border-clinical-border">
             <tr>
               {columns.map((c) => (
@@ -121,12 +121,12 @@ export function PageHeader({
   meta?: ReactNode;
 }) {
   return (
-    <div className="border-b border-clinical-border pb-4 mb-5 flex items-end justify-between gap-4">
+    <div className="mb-5 flex flex-col items-start justify-between gap-3 border-b border-clinical-border pb-4 sm:flex-row sm:items-end sm:gap-4">
       <div>
         <h1 className="text-[22px] font-bold font-heading tracking-tight text-clinical-fg">{title}</h1>
         {subtitle && <p className="text-[13.5px] text-clinical-fg-muted mt-1 leading-relaxed">{subtitle}</p>}
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:gap-3">
         {meta && <div className="text-[12.5px] text-clinical-fg-muted text-right">{meta}</div>}
         {actions}
       </div>

@@ -204,16 +204,11 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
       <button
         onClick={() => setIsOpen(true)}
         data-copilot
-        className="fixed bottom-5 right-5 z-50 hidden h-[58px] w-[58px] items-center justify-center rounded-[20px] border border-white/30 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] md:flex group"
-        style={{
-          background: "linear-gradient(145deg, #4338ca 0%, #7c3aed 52%, #0891b2 100%)",
-          boxShadow: "0 20px 44px -14px rgba(79,70,229,.78), 0 5px 16px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.32)",
-        }}
+        className="group fixed bottom-4 right-4 z-50 flex h-[52px] w-[52px] items-center justify-center rounded-[17px] border border-slate-200 bg-white shadow-[0_14px_34px_-14px_rgba(15,23,42,.42)] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] dark:border-slate-700 md:bottom-5 md:right-5 md:h-[56px] md:w-[56px]"
         title="Ask Axeris"
+        aria-label="Open Axeris AI Copilot"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-white shadow-[0_5px_15px_rgba(15,23,42,.18)]">
-          <AxerisLogo size={28} />
-        </span>
+        <AxerisLogo size={30} />
       </button>
     );
   }
@@ -222,10 +217,10 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
     <div
       data-copilot
       className={clsx(
-        "fixed z-50 bg-white dark:bg-slate-800 rounded-[22px] shadow-2xl border border-indigo-100 dark:border-slate-700 flex flex-col transition-all duration-300 overflow-hidden",
+        "fixed bottom-3 left-3 right-3 z-50 flex h-[min(78dvh,620px)] flex-col overflow-hidden rounded-[20px] border border-indigo-100 bg-white shadow-2xl transition-all duration-300 dark:border-slate-700 dark:bg-slate-800 md:left-auto md:rounded-[22px]",
         isExpanded
-          ? "bottom-4 right-4 w-[650px] h-[750px]"
-          : "bottom-6 right-6 w-[440px] h-[600px]"
+          ? "md:bottom-4 md:right-4 md:h-[min(750px,calc(100vh-2rem))] md:w-[650px]"
+          : "md:bottom-6 md:right-6 md:h-[min(600px,calc(100vh-3rem))] md:w-[440px]"
       )}
     >
       {/* Header */}
@@ -253,7 +248,7 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-1.5 hover:bg-white/20 rounded-lg transition-colors"
+            className="hidden p-1.5 hover:bg-white/20 rounded-lg transition-colors md:block"
             title={isExpanded ? "Minimize" : "Expand"}
           >
             {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}

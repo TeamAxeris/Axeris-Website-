@@ -113,7 +113,7 @@ export default function GlobalSearch() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => { if (results && results.total > 0) setOpen(true); }}
           placeholder="Search patients, drugs, providers... (Ctrl+K)"
-          className="pl-10 pr-10 py-2 border border-gray-300 rounded-lg text-sm w-80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all dark:border-slate-600"
+          className="w-[min(20rem,calc(100vw-5rem))] rounded-lg border border-gray-300 py-2 pl-10 pr-10 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-slate-600"
         />
         {loading && (
           <Loader2 className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 animate-spin" />
@@ -129,7 +129,7 @@ export default function GlobalSearch() {
       </div>
 
       {open && results && (
-        <div className="absolute top-full mt-2 w-[420px] right-0 bg-white rounded-xl border border-gray-200 shadow-2xl z-50 overflow-hidden animate-fade-in dark:bg-slate-800 dark:border-slate-700">
+        <div className="absolute right-0 top-full z-50 mt-2 w-[min(420px,calc(100vw-1.5rem))] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl animate-fade-in dark:border-slate-700 dark:bg-slate-800">
           {results.total === 0 ? (
             <div className="p-6 text-center text-sm text-gray-400">
               No results found for &quot;{query}&quot;

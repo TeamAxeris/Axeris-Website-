@@ -141,7 +141,7 @@ const PBA_SECTIONS: NavSection[] = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
@@ -151,7 +151,7 @@ export default function Sidebar() {
   const sections = mode === "TPA" ? TPA_SECTIONS : PBA_SECTIONS;
 
   return (
-    <aside data-tour="nav" className="w-[248px] flex flex-col min-h-screen border-r"
+    <aside data-tour="nav" className={clsx("flex min-h-screen flex-col border-r", className)}
       style={{ background: "radial-gradient(circle at 15% 0%, rgba(47,47,230,0.16), transparent 22%), linear-gradient(180deg, #181511 0%, #12100d 100%)", color: "#cfc9bd", borderColor: "#302b24" }}>
       {/* Brand */}
       <div className="px-4 py-4 border-b" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
@@ -192,6 +192,7 @@ export default function Sidebar() {
                       <Link
                         key={item.href}
                         href={item.href}
+                        onClick={onNavigate}
                         className={clsx(
                           "relative mx-2 flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] transition-all duration-150",
                           isActive
