@@ -13,6 +13,10 @@ const brandBlue = {
 };
 
 const config: Config = {
+  // The console owns its light/dark state explicitly through ThemeProvider.
+  // Without class mode, Tailwind follows the operating-system preference and
+  // can render dark cards while the console itself is still in light mode.
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
