@@ -1,0 +1,362 @@
+[
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-090",
+    "severity": "major",
+    "description": "Warfarin + Ibuprofen interaction",
+    "clinical_effect": "Increased bleeding risk. NSAIDs inhibit platelet function and may increase warfarin levels through protein binding displacement.",
+    "management": "Avoid combination. Use acetaminophen for pain if possible. If NSAID required, monitor INR closely."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-091",
+    "severity": "major",
+    "description": "Warfarin + Naproxen interaction",
+    "clinical_effect": "Increased bleeding risk. NSAIDs inhibit platelet function and may displace warfarin from protein binding sites.",
+    "management": "Avoid combination. Use acetaminophen for pain if possible."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-092",
+    "severity": "moderate",
+    "description": "Warfarin + Celecoxib interaction",
+    "clinical_effect": "Potential increased bleeding risk. COX-2 inhibitors have less platelet effect but can still increase INR.",
+    "management": "Monitor INR closely if combination necessary. Consider dose reduction of warfarin."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-093",
+    "severity": "major",
+    "description": "Warfarin + Meloxicam interaction",
+    "clinical_effect": "Increased bleeding risk through platelet inhibition and potential warfarin displacement.",
+    "management": "Avoid combination. Use acetaminophen instead."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-061",
+    "severity": "moderate",
+    "description": "Warfarin + Azithromycin interaction",
+    "clinical_effect": "Macrolide antibiotics may increase warfarin effect by inhibiting CYP3A4 metabolism and altering gut flora vitamin K production.",
+    "management": "Monitor INR within 3-5 days of starting azithromycin. May need warfarin dose adjustment."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-062",
+    "severity": "major",
+    "description": "Warfarin + Ciprofloxacin interaction",
+    "clinical_effect": "Fluoroquinolones inhibit CYP1A2 metabolism of warfarin, significantly increasing INR and bleeding risk.",
+    "management": "If combination necessary, reduce warfarin dose by 25-50% and monitor INR every 2-3 days."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-040",
+    "severity": "major",
+    "description": "Oxycodone + Alprazolam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination unless no alternative exists. If combined, use lowest effective doses and shortest duration."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-041",
+    "severity": "major",
+    "description": "Oxycodone + Lorazepam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination unless no alternative exists."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-042",
+    "severity": "major",
+    "description": "Oxycodone + Diazepam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-043",
+    "severity": "major",
+    "description": "Oxycodone + Clonazepam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination."
+  },
+  {
+    "drug_a": "DRUG-031",
+    "drug_b": "DRUG-040",
+    "severity": "major",
+    "description": "Hydrocodone + Alprazolam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination."
+  },
+  {
+    "drug_a": "DRUG-031",
+    "drug_b": "DRUG-041",
+    "severity": "major",
+    "description": "Hydrocodone + Lorazepam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression.",
+    "management": "FDA black box warning. Avoid combination."
+  },
+  {
+    "drug_a": "DRUG-032",
+    "drug_b": "DRUG-040",
+    "severity": "major",
+    "description": "Morphine + Alprazolam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use increases risk of respiratory depression, profound sedation, coma, and death.",
+    "management": "FDA black box warning. Avoid combination."
+  },
+  {
+    "drug_a": "DRUG-033",
+    "drug_b": "DRUG-040",
+    "severity": "major",
+    "description": "Fentanyl + Alprazolam interaction (FDA Black Box Warning)",
+    "clinical_effect": "Concurrent opioid and benzodiazepine use — highest risk combination. Fentanyl potency makes respiratory depression particularly dangerous.",
+    "management": "FDA black box warning. Avoid combination. If unavoidable, extreme caution with monitoring."
+  },
+  {
+    "drug_a": "DRUG-034",
+    "drug_b": "DRUG-070",
+    "severity": "major",
+    "description": "Tramadol + Sertraline interaction",
+    "clinical_effect": "Serotonin syndrome risk. Both drugs increase serotonergic activity. Also increased seizure risk with tramadol.",
+    "management": "Avoid combination if possible. If used together, monitor for serotonin syndrome symptoms."
+  },
+  {
+    "drug_a": "DRUG-034",
+    "drug_b": "DRUG-073",
+    "severity": "major",
+    "description": "Tramadol + Venlafaxine interaction",
+    "clinical_effect": "High serotonin syndrome risk. Both drugs significantly increase serotonin. Also increased seizure threshold lowering.",
+    "management": "Avoid combination. Use alternative analgesic."
+  },
+  {
+    "drug_a": "DRUG-010",
+    "drug_b": "DRUG-016",
+    "severity": "major",
+    "description": "Lisinopril + Spironolactone interaction",
+    "clinical_effect": "Hyperkalemia risk. ACE inhibitors reduce aldosterone-mediated potassium excretion. Adding potassium-sparing diuretic compounds this effect.",
+    "management": "If combination necessary, monitor serum potassium within 1 week and regularly thereafter. Avoid in patients with eGFR < 30."
+  },
+  {
+    "drug_a": "DRUG-013",
+    "drug_b": "DRUG-016",
+    "severity": "major",
+    "description": "Losartan + Spironolactone interaction",
+    "clinical_effect": "Hyperkalemia risk. ARBs reduce aldosterone-mediated potassium excretion similar to ACE inhibitors.",
+    "management": "Monitor serum potassium closely. Avoid if potassium already elevated."
+  },
+  {
+    "drug_a": "DRUG-010",
+    "drug_b": "DRUG-013",
+    "severity": "major",
+    "description": "Lisinopril + Losartan (dual RAAS blockade)",
+    "clinical_effect": "Dual RAAS blockade increases risk of hyperkalemia, hypotension, and renal failure without proven mortality benefit.",
+    "management": "Avoid combination. Use one RAAS agent only."
+  },
+  {
+    "drug_a": "DRUG-070",
+    "drug_b": "DRUG-071",
+    "severity": "major",
+    "description": "Sertraline + Fluoxetine (dual SSRI)",
+    "clinical_effect": "Serotonin syndrome risk from dual serotonergic therapy. No clinical benefit from combining two SSRIs.",
+    "management": "Never combine two SSRIs. Cross-taper if switching between agents."
+  },
+  {
+    "drug_a": "DRUG-070",
+    "drug_b": "DRUG-072",
+    "severity": "major",
+    "description": "Sertraline + Escitalopram (dual SSRI)",
+    "clinical_effect": "Serotonin syndrome risk. Duplicate serotonergic mechanism with no added benefit.",
+    "management": "Never combine. Use one SSRI at a time."
+  },
+  {
+    "drug_a": "DRUG-070",
+    "drug_b": "DRUG-073",
+    "severity": "major",
+    "description": "Sertraline + Venlafaxine (SSRI + SNRI)",
+    "clinical_effect": "Serotonin syndrome risk. Overlapping serotonergic mechanisms increase toxicity risk.",
+    "management": "Avoid combination. Cross-taper with washout period if switching."
+  },
+  {
+    "drug_a": "DRUG-022",
+    "drug_b": "DRUG-061",
+    "severity": "major",
+    "description": "Simvastatin + Azithromycin interaction",
+    "clinical_effect": "Macrolide antibiotics inhibit CYP3A4, increasing simvastatin levels and risk of rhabdomyolysis.",
+    "management": "Suspend simvastatin during macrolide course. Or use pravastatin (not CYP3A4 metabolized)."
+  },
+  {
+    "drug_a": "DRUG-022",
+    "drug_b": "DRUG-112",
+    "severity": "major",
+    "description": "Simvastatin + Diltiazem interaction",
+    "clinical_effect": "Diltiazem inhibits CYP3A4, significantly increasing simvastatin levels. Risk of myopathy and rhabdomyolysis.",
+    "management": "Simvastatin dose should not exceed 10mg/day with diltiazem. Consider switching to pravastatin or rosuvastatin."
+  },
+  {
+    "drug_a": "DRUG-110",
+    "drug_b": "DRUG-111",
+    "severity": "major",
+    "description": "Digoxin + Amiodarone interaction",
+    "clinical_effect": "Amiodarone increases digoxin levels by 70-100% by inhibiting P-glycoprotein and reducing renal clearance.",
+    "management": "Reduce digoxin dose by 50% when initiating amiodarone. Monitor digoxin levels closely."
+  },
+  {
+    "drug_a": "DRUG-110",
+    "drug_b": "DRUG-014",
+    "severity": "moderate",
+    "description": "Digoxin + Hydrochlorothiazide interaction",
+    "clinical_effect": "Thiazide-induced hypokalemia increases sensitivity to digoxin toxicity.",
+    "management": "Monitor potassium levels. Consider potassium supplementation or potassium-sparing agent."
+  },
+  {
+    "drug_a": "DRUG-090",
+    "drug_b": "DRUG-010",
+    "severity": "moderate",
+    "description": "Ibuprofen + Lisinopril interaction",
+    "clinical_effect": "NSAIDs reduce antihypertensive effect of ACE inhibitors and may worsen renal function.",
+    "management": "Monitor blood pressure and renal function. Use lowest NSAID dose for shortest duration."
+  },
+  {
+    "drug_a": "DRUG-090",
+    "drug_b": "DRUG-013",
+    "severity": "moderate",
+    "description": "Ibuprofen + Losartan interaction",
+    "clinical_effect": "NSAIDs reduce antihypertensive effect of ARBs and may worsen renal function.",
+    "management": "Monitor blood pressure and renal function. Limit NSAID use."
+  },
+  {
+    "drug_a": "DRUG-051",
+    "drug_b": "DRUG-090",
+    "severity": "major",
+    "description": "Apixaban + Ibuprofen interaction",
+    "clinical_effect": "NSAIDs increase bleeding risk when combined with direct oral anticoagulants.",
+    "management": "Avoid combination. If NSAID needed, use lowest dose for shortest time and monitor for bleeding."
+  },
+  {
+    "drug_a": "DRUG-052",
+    "drug_b": "DRUG-090",
+    "severity": "major",
+    "description": "Rivaroxaban + Ibuprofen interaction",
+    "clinical_effect": "Increased bleeding risk combining DOAC with NSAID.",
+    "management": "Avoid combination. Use acetaminophen for pain management."
+  },
+  {
+    "drug_a": "DRUG-001",
+    "drug_b": "DRUG-062",
+    "severity": "moderate",
+    "description": "Metformin + Ciprofloxacin interaction",
+    "clinical_effect": "Fluoroquinolones can cause unpredictable blood glucose changes (both hypo- and hyperglycemia) when combined with antidiabetics.",
+    "management": "Monitor blood glucose closely during antibiotic course."
+  },
+  {
+    "drug_a": "DRUG-012",
+    "drug_b": "DRUG-120",
+    "severity": "moderate",
+    "description": "Metoprolol + Albuterol interaction",
+    "clinical_effect": "Beta-blockers may reduce bronchodilator effect of albuterol. Metoprolol (beta-1 selective) less likely but possible at higher doses.",
+    "management": "Use cardioselective beta-blocker at lowest effective dose. Monitor respiratory function."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-140",
+    "severity": "moderate",
+    "description": "Oxycodone + Gabapentin interaction",
+    "clinical_effect": "Combined CNS depression. Gabapentin can potentiate opioid-related respiratory depression.",
+    "management": "FDA warning. Use lowest effective doses. Monitor for respiratory depression."
+  },
+  {
+    "drug_a": "DRUG-030",
+    "drug_b": "DRUG-141",
+    "severity": "moderate",
+    "description": "Oxycodone + Pregabalin interaction",
+    "clinical_effect": "Combined CNS depression with increased respiratory depression risk.",
+    "management": "FDA warning. Use with caution at lowest doses."
+  },
+  {
+    "drug_a": "DRUG-074",
+    "drug_b": "DRUG-034",
+    "severity": "major",
+    "description": "Duloxetine + Tramadol interaction",
+    "clinical_effect": "Serotonin syndrome risk and increased seizure risk.",
+    "management": "Avoid combination. Use alternative analgesic."
+  },
+  {
+    "drug_a": "DRUG-050",
+    "drug_b": "DRUG-160",
+    "severity": "minor",
+    "description": "Warfarin + Acetaminophen interaction",
+    "clinical_effect": "High-dose acetaminophen (>2g/day for >3 days) may increase INR modestly.",
+    "management": "Preferred over NSAIDs with warfarin. Keep dose under 2g/day if possible. Monitor INR."
+  },
+  {
+    "drug_a": "DRUG-111",
+    "drug_b": "DRUG-050",
+    "severity": "major",
+    "description": "Amiodarone + Warfarin interaction",
+    "clinical_effect": "Amiodarone inhibits CYP2C9 metabolism of warfarin, increasing INR by 50-70%.",
+    "management": "Reduce warfarin dose by 30-50% when starting amiodarone. Monitor INR weekly for first month."
+  },
+  {
+    "drug_a": "DRUG-080",
+    "drug_b": "DRUG-051",
+    "severity": "moderate",
+    "description": "Omeprazole + Apixaban interaction",
+    "clinical_effect": "PPIs may slightly increase apixaban exposure, though clinical significance is debated.",
+    "management": "Generally safe. Monitor if high PPI doses used long-term."
+  },
+  {
+    "drug_a": "DRUG-071",
+    "drug_b": "DRUG-074",
+    "severity": "major",
+    "description": "Fluoxetine + Duloxetine (SSRI + SNRI)",
+    "clinical_effect": "Serotonin syndrome risk. Also fluoxetine inhibits CYP2D6, increasing duloxetine levels.",
+    "management": "Avoid combination. Note fluoxetine has very long half-life requiring extended washout."
+  },
+  {
+    "drug_a": "DRUG-012",
+    "drug_b": "DRUG-112",
+    "severity": "major",
+    "description": "Metoprolol + Diltiazem interaction",
+    "clinical_effect": "Additive negative chronotropic and inotropic effects. Risk of severe bradycardia, AV block, and heart failure.",
+    "management": "Avoid combination. If needed, use with extreme caution and cardiac monitoring."
+  },
+  {
+    "drug_a": "DRUG-040",
+    "drug_b": "DRUG-041",
+    "severity": "major",
+    "description": "Alprazolam + Lorazepam (dual benzodiazepine)",
+    "clinical_effect": "No clinical benefit from combining benzodiazepines. Additive CNS depression, respiratory depression, falls risk.",
+    "management": "Never combine two benzodiazepines. Use one agent at appropriate dose."
+  },
+  {
+    "drug_a": "DRUG-093",
+    "drug_b": "DRUG-010",
+    "severity": "moderate",
+    "description": "Meloxicam + Lisinopril interaction",
+    "clinical_effect": "NSAIDs reduce antihypertensive effect of ACE inhibitors and may worsen renal function.",
+    "management": "Monitor blood pressure and renal function. Use lowest NSAID dose for shortest duration."
+  },
+  {
+    "drug_a": "DRUG-093",
+    "drug_b": "DRUG-013",
+    "severity": "moderate",
+    "description": "Meloxicam + Losartan interaction",
+    "clinical_effect": "NSAIDs reduce antihypertensive effect of ARBs and may worsen renal function.",
+    "management": "Monitor blood pressure and renal function. Limit NSAID use."
+  },
+  {
+    "drug_a": "DRUG-051",
+    "drug_b": "DRUG-093",
+    "severity": "major",
+    "description": "Apixaban + Meloxicam interaction",
+    "clinical_effect": "NSAIDs increase bleeding risk when combined with direct oral anticoagulants.",
+    "management": "Avoid combination. If NSAID needed, use lowest dose for shortest time and monitor for bleeding."
+  },
+  {
+    "drug_a": "DRUG-052",
+    "drug_b": "DRUG-093",
+    "severity": "major",
+    "description": "Rivaroxaban + Meloxicam interaction",
+    "clinical_effect": "Increased bleeding risk combining DOAC with NSAID.",
+    "management": "Avoid combination. Use acetaminophen for pain management."
+  }
+]
