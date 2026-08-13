@@ -4,16 +4,17 @@ This repository contains the public Axeris site and the complete local demo stac
 
 - Public website at `http://localhost:3002`
 - Plan Sponsor Console at `http://localhost:3002/console/tpa/dashboard`
-- Console application source in `apps/console/frontend`
+- Production console routes in `src/app/console`
+- Shared console UI in `src/components`, `src/context`, and `src/lib`
+- Standalone console reference in `apps/console/frontend`
 - Local FastAPI and model/data services in `apps/console/backend`
 
 ## Getting Started
 
-Install both JavaScript applications and the local Python API:
+Install the unified web application and the local Python API:
 
 ```bash
 npm install
-npm --prefix apps/console/frontend install
 python3 -m pip install -r apps/console/backend/requirements.txt
 ```
 
@@ -23,11 +24,11 @@ Then start the entire local stack in one foreground command:
 npm run dev:all
 ```
 
-The command starts the website, console, and API together. `Try Live Demo` stays on the Axeris origin and opens the TPA Plan Sponsor Console by default.
+The command starts the unified website/console and API together. `Try Live Demo` stays on the Axeris origin, enters demo mode automatically, and opens the TPA Plan Sponsor Console by default.
 
 The API seeds its local demo database and trains the bundled XGBoost, LightGBM, Isolation Forest, DBSCAN, meta-learner, and patient-context models before it accepts traffic. No remote model service is required.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The public site lives in `src/app/page.tsx`; the embedded console lives under `src/app/console`. Both update through the same Next.js process.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
