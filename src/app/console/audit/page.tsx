@@ -166,7 +166,7 @@ export default function AuditPage() {
           {/* Audit Log */}
           <div className="lg:col-span-3 space-y-4 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
             {/* Filters */}
-            <div className="flex gap-1 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-1 w-fit">
+            <div className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-gray-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-800 sm:w-fit">
               {["ALL", "approve", "deny", "request_review", "send_to_prescriber"].map((a) => (
                 <button
                   key={a}

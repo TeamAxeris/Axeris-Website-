@@ -68,7 +68,7 @@ export default function PriorAuthPage() {
         {/* Filters */}
         <div className="flex items-center gap-3">
           <Filter className="w-4 h-4 text-gray-400" />
-          <div className="flex gap-1 bg-white rounded-lg border border-gray-200 p-1 dark:bg-slate-800 dark:border-slate-700">
+          <div className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-gray-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-800">
             {["ALL", "pending_review", "pending_info", "approved", "denied"].map((s) => (
               <button
                 key={s}
@@ -91,13 +91,13 @@ export default function PriorAuthPage() {
         </div>
 
         {/* PA Queue Table */}
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden dark:bg-slate-800 dark:border-slate-700">
+        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800">
           {loading ? (
             <div className="p-8 text-center text-gray-400">Loading prior authorizations...</div>
           ) : queue.length === 0 ? (
             <div className="p-8 text-center text-gray-400">No prior authorizations found</div>
           ) : (
-            <table className="w-full">
+            <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50 dark:bg-slate-900/40 dark:border-slate-700">
                   <th className="text-left text-xs font-medium text-gray-500 px-4 py-3">PA ID</th>

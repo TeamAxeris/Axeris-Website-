@@ -74,11 +74,11 @@ export default function PrescriptionsPage() {
         </div>
 
         {/* Table */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden">
+        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white dark:border-slate-700 dark:bg-slate-800">
           {loading ? (
             <div className="p-8 text-center text-gray-400 dark:text-slate-500">Loading...</div>
           ) : (
-            <table className="w-full">
+            <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/40">
                   <th className="text-left text-xs font-medium text-gray-500 dark:text-slate-400 px-4 py-3">Flag</th>

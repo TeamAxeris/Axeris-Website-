@@ -22,7 +22,11 @@ export default function WelcomeGate() {
 
   useEffect(() => {
     const t = setTimeout(() => {
-      try { if (!localStorage.getItem(KEY)) setPhase("welcome"); } catch {}
+      try {
+        if (!localStorage.getItem(KEY) && !document.querySelector('[data-copilot-open="true"]')) {
+          setPhase("welcome");
+        }
+      } catch {}
     }, 700);
     return () => clearTimeout(t);
   }, []);
@@ -53,7 +57,7 @@ export default function WelcomeGate() {
 
   if (phase === "welcome") {
     return (
-      <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4"
+      <div data-welcome-overlay className="fixed inset-0 z-[2000] flex items-center justify-center p-4"
            style={{ background: "rgba(20,18,12,0.42)", backdropFilter: "blur(4px)" }}>
         <div className="relative w-full max-w-[480px] rounded-3xl p-8 animate-fade-in-up overflow-hidden"
              style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", boxShadow: "0 30px 80px -20px rgba(20,18,12,0.4)" }}>
@@ -109,7 +113,7 @@ export default function WelcomeGate() {
   if (rect && rect.height > vh * 0.6) { tipLeft = rect.right + 20; tipTop = vh / 2 - 90; }
 
   return (
-    <div className="fixed inset-0 z-[2000]">
+    <div data-welcome-overlay className="fixed inset-0 z-[2000]">
       {/* spotlight hole via big box-shadow */}
       <div
         className="absolute rounded-xl transition-all duration-300 pointer-events-none"

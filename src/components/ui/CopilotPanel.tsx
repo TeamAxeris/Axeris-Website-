@@ -204,7 +204,7 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
       <button
         onClick={() => setIsOpen(true)}
         data-copilot
-        className="group fixed bottom-4 right-4 z-50 flex h-[52px] w-[52px] items-center justify-center rounded-[17px] border border-slate-200 bg-white shadow-[0_14px_34px_-14px_rgba(15,23,42,.42)] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] dark:border-slate-700 md:bottom-5 md:right-5 md:h-[56px] md:w-[56px]"
+        className="group fixed right-4 top-1 z-50 flex h-[52px] w-[52px] items-center justify-center rounded-[17px] border border-slate-200 bg-white shadow-[0_14px_34px_-14px_rgba(15,23,42,.42)] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.03] dark:border-slate-700 md:bottom-5 md:right-5 md:top-auto md:h-[56px] md:w-[56px]"
         title="Ask Axeris"
         aria-label="Open Axeris AI Copilot"
       >
@@ -216,6 +216,7 @@ export default function CopilotPanel({ contextType, contextId }: CopilotPanelPro
   return (
     <div
       data-copilot
+      data-copilot-open="true"
       className={clsx(
         "fixed bottom-3 left-3 right-3 z-50 flex h-[min(78dvh,620px)] flex-col overflow-hidden rounded-[20px] border border-indigo-100 bg-white shadow-2xl transition-all duration-300 dark:border-slate-700 dark:bg-slate-800 md:left-auto md:rounded-[22px]",
         isExpanded
