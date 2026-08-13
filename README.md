@@ -1,20 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Axeris unified website and Plan Sponsor Console
+
+This repository contains the public Axeris site and the complete local demo stack:
+
+- Public website at `http://localhost:3002`
+- Plan Sponsor Console at `http://localhost:3002/console/tpa/dashboard`
+- Console application source in `apps/console/frontend`
+- Local FastAPI and model/data services in `apps/console/backend`
 
 ## Getting Started
 
-First, run the development server:
+Install both JavaScript applications and the local Python API:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm --prefix apps/console/frontend install
+python3 -m pip install -r apps/console/backend/requirements.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then start the entire local stack in one foreground command:
+
+```bash
+npm run dev:all
+```
+
+The command starts the website, console, and API together. `Try Live Demo` stays on the Axeris origin and opens the TPA Plan Sponsor Console by default.
+
+The API seeds its local demo database and trains the bundled XGBoost, LightGBM, Isolation Forest, DBSCAN, meta-learner, and patient-context models before it accepts traffic. No remote model service is required.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /* deterministic jagged ascending line */
@@ -42,9 +41,9 @@ export default function Hero() {
           Unsafe, wasteful prescriptions,<br className="hidden sm:inline" /> stopped before they&apos;re paid.
         </h1>
         <div className="flex items-center gap-3 flex-wrap pointer-events-auto" style={{ animation: "fadeInUp 0.8s ease 0.12s both" }}>
-          <Link href="https://proto2-mocha.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a href="/console/tpa/dashboard" className="btn btn-primary">
             Try Live Demo
-          </Link>
+          </a>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Contact us</a>
         </div>
       </div>

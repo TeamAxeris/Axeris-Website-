@@ -1,0 +1,65 @@
+name: AI Apply Patch
+
+on:
+  workflow_dispatch:
+    inputs:
+      patch_base64:
+        description: "Base64-encoded unified git patch to apply"
+        required: true
+        type: string
+      commit_message:
+        description: "Commit message"
+        required: true
+        default: "AI update"
+        type: string
+      target_branch:
+        description: "Branch to update"
+        required: true
+        default: "main"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_branch }}
+          fetch-depth: 0
+
+      - name: Decode patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s' '${{ inputs.patch_base64 }}' | base64 -d > /tmp/ai.patch
+          echo "Patch decoded to /tmp/ai.patch"
+          echo "--- Patch preview ---"
+          sed -n '1,120p' /tmp/ai.patch
+
+      - name: Apply patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply --check /tmp/ai.patch
+          git apply /tmp/ai.patch
+
+      - name: Commit and push
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "axeris-ai-bot"
+          git config user.email "ai-bot@axeris.ai"
+
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git add .
+          git commit -m "${{ inputs.commit_message }}"
+          git push origin "HEAD:${{ inputs.target_branch }}"
