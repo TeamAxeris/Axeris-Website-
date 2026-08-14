@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="aurora" style={{ top: -260, right: "0%", width: 700, height: 560, opacity: 0.4, animation: "drift 24s ease-in-out infinite" }} />
 
       {/* jagged line rising out of the bottom-right — desktop only; on phones it crosses the buttons */}
-      <div className="hidden sm:block absolute bottom-0 right-0 w-[52%] pointer-events-none" aria-hidden="true">
+      <div className="hidden lg:block absolute bottom-0 right-0 w-[42%] pointer-events-none" aria-hidden="true">
         <svg viewBox="0 0 660 420" className="w-full h-auto">
           <path className={`draw ${play ? "play" : ""}`} pathLength={1} d={LINE}
                 fill="none" stroke="var(--blue)" strokeWidth="2.5" vectorEffect="non-scaling-stroke"
@@ -37,7 +37,7 @@ export default function Hero() {
       </div>
 
       <div className="container-wide w-full relative z-[2] pb-[52px] sm:pb-[68px] pt-[120px] sm:pt-[140px] pointer-events-none">
-        <h1 className="headline text-[1.9rem] sm:text-[3.3rem] lg:text-[3.8rem] text-[var(--ink)] mb-8"
+        <h1 className="headline max-w-[880px] text-[1.9rem] sm:text-[3.3rem] lg:text-[3.8rem] text-[var(--ink)] mb-8"
             style={{ animation: "fadeInUp 0.8s ease both" }}>
           Every prescription. Every contract.<br className="hidden sm:inline" /> Every plan dollar, independently checked.
         </h1>
