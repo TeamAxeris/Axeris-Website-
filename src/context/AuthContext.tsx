@@ -18,6 +18,7 @@ interface AuthContextType {
 
 export const DEMO_USERNAME = "access@axeris";
 export const DEMO_PASSWORD = "EvidenceFirst!2026";
+const AUTH_STORAGE_KEY = "axeris_auth_v2";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -32,22 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const isDemoEntry = new URLSearchParams(window.location.search).get("demo") === "1";
-    if (isDemoEntry) {
-      const demoUser: User = {
-        name: "Clinical Reviewer",
-        email: DEMO_USERNAME,
-        role: "Senior Clinical Reviewer",
-        avatar: "R",
-      };
-      setUser(demoUser);
-      setIsAuthenticated(true);
-      localStorage.setItem("axeris_auth", JSON.stringify(demoUser));
-      setChecked(true);
-      return;
-    }
-
-    const stored = localStorage.getItem("axeris_auth");
+    const stored = localStorage.getItem(AUTH_STORAGE_KEY);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -71,13 +57,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
     setUser(mockUser);
     setIsAuthenticated(true);
-    localStorage.setItem("axeris_auth", JSON.stringify(mockUser));
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(mockUser));
     return true;
   };
 
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
+    localStorage.removeItem(AUTH_STORAGE_KEY);
     localStorage.removeItem("axeris_auth");
   };
 
