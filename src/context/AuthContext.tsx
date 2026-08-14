@@ -18,7 +18,6 @@ interface AuthContextType {
 
 export const DEMO_USERNAME = "access@axeris";
 export const DEMO_PASSWORD = "XyZn827$#";
-const AUTH_STORAGE_KEY = "axeris_auth_v2";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -33,14 +32,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(AUTH_STORAGE_KEY);
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setUser(parsed);
-        setIsAuthenticated(true);
-      } catch { /* ignore */ }
-    }
     setChecked(true);
   }, []);
 
@@ -57,15 +48,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
     setUser(mockUser);
     setIsAuthenticated(true);
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(mockUser));
     return true;
   };
 
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem(AUTH_STORAGE_KEY);
-    localStorage.removeItem("axeris_auth");
   };
 
   if (!checked) return null;
