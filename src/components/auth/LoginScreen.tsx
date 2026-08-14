@@ -68,7 +68,7 @@ export default function LoginScreen() {
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="access@axeris"
+                placeholder="Enter username"
                 autoComplete="username"
                 className="w-full bg-[#fbfaf6] border border-[#e4dfd4] rounded-[9px] pl-10 pr-4 py-2.5 text-sm text-[#17140d] placeholder-[#a8a196] focus:outline-none focus:ring-2 focus:ring-[#2f2fe6] focus:border-transparent transition-all"
               />
