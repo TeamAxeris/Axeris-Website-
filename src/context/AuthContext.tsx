@@ -17,7 +17,7 @@ interface AuthContextType {
 }
 
 export const DEMO_USERNAME = "access@axeris";
-export const DEMO_PASSWORD = "EvidenceFirst!2026";
+export const DEMO_PASSWORD = "XyZn827$#";
 const AUTH_STORAGE_KEY = "axeris_auth_v2";
 
 const AuthContext = createContext<AuthContextType>({
