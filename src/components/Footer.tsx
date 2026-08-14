@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
+import { DEMO_REQUEST_MAILTO } from "@/lib/contact";
 
 const nav = [
   { label: "Problem", href: "#problem" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },
-  { label: "Live Demo", href: "/console/tpa/dashboard?demo=1" },
+  { label: "Request Demo", href: DEMO_REQUEST_MAILTO },
   { label: "Contact", href: "https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" },
 ];
 

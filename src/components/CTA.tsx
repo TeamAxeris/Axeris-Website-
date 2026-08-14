@@ -1,6 +1,7 @@
 "use client";
 
 import { useReveal } from "./useReveal";
+import { DEMO_REQUEST_MAILTO } from "@/lib/contact";
 
 export default function CTA() {
   const ref = useReveal();
@@ -12,8 +13,8 @@ export default function CTA() {
         <h2 className="headline text-[1.9rem] sm:text-[3.2rem] text-[var(--ink)] max-w-[18ch] mx-auto mb-9">
           If we don&apos;t save money, <span className="grad-text">you don&apos;t pay.</span>
         </h2>
-        <a href="/console/tpa/dashboard?demo=1" className="btn btn-primary !px-7 !py-3.5 !text-[1rem]">
-          Try Live Demo
+        <a href={DEMO_REQUEST_MAILTO} className="btn btn-primary !px-7 !py-3.5 !text-[1rem]">
+          Request a Demo
         </a>
       </div>
     </section>

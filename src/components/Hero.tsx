@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { DEMO_REQUEST_MAILTO } from "@/lib/contact";
 
 /* deterministic jagged ascending line */
 const N = 90;
@@ -41,8 +42,8 @@ export default function Hero() {
           Unsafe, wasteful prescriptions,<br className="hidden sm:inline" /> stopped before they&apos;re paid.
         </h1>
         <div className="flex items-center gap-3 flex-wrap pointer-events-auto" style={{ animation: "fadeInUp 0.8s ease 0.12s both" }}>
-          <a href="/console/tpa/dashboard?demo=1" className="btn btn-primary">
-            Try Live Demo
+          <a href={DEMO_REQUEST_MAILTO} className="btn btn-primary">
+            Request a Demo
           </a>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Contact us</a>
         </div>
