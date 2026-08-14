@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { DEMO_REQUEST_URL } from "@/lib/contact";
+import { CONTACT_URL, DEMO_REQUEST_URL } from "@/lib/contact";
 
 /* deterministic jagged ascending line */
 const N = 90;
@@ -45,7 +45,7 @@ export default function Hero() {
           <a href={DEMO_REQUEST_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             Request a Demo
           </a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Contact us</a>
+          <a href={CONTACT_URL} className="btn btn-ghost">Contact us</a>
         </div>
       </div>
     </section>
