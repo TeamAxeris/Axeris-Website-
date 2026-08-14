@@ -7,9 +7,11 @@ import { DataTable, PageHeader, Column } from "@/components/ui/DataTable";
 import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import { WorkflowDataSources } from "@/components/ui/WorkflowDataSources";
 import { TableSkeleton } from "@/components/ui/Skeleton";
+import { DetailDrawer, Field, FieldGroup } from "@/components/ui/DetailDrawer";
+import ContractIntegrityPanel from "@/components/prescriptions/ContractIntegrityPanel";
 import { InsightPanel, PriorityMap, RankedBars, SignalCard, StackedOutcome } from "@/components/dashboard/InsightCharts";
 import { demoFetch } from "@/lib/demoFetch";
-import { CircleDollarSign, Clock3, ListFilter, ShieldAlert } from "lucide-react";
+import { ArrowUpRight, CircleDollarSign, Clock3, ListFilter, ShieldAlert } from "lucide-react";
 import clsx from "clsx";
 
 interface PendItem {
@@ -30,6 +32,7 @@ function TPAPendQueueInner() {
   const [sortBy, setSortBy] = useState<"sla" | "risk" | "cost">(breachParam ? "sla" : "risk");
   const [softCount, setSoftCount] = useState(0);
   const [hardCount, setHardCount] = useState(0);
+  const [selected, setSelected] = useState<PendItem | null>(null);
 
   useEffect(() => {
     const url = filter ? `/api/v1/tpa/pend-queue?hold_type=${filter}&sort_by=${sortBy}&limit=200`
@@ -61,8 +64,15 @@ function TPAPendQueueInner() {
   }, {} as Record<string, { label: string; value: number; claims: number }>)).slice(0, 7);
 
   const columns: Column<PendItem>[] = [
-    { key: "rx", header: "Rx ID", width: "100px",
-      render: (i) => <Link href={`/console/prescriptions/${i.rx_id}`} className="font-mono text-[12px] text-blue-600 hover:underline dark:text-blue-400">{i.rx_id}</Link> },
+    { key: "rx", header: "Case", width: "112px",
+      render: (i) => (
+        <button
+          onClick={(event) => { event.stopPropagation(); setSelected(i); }}
+          className="inline-flex items-center gap-1 font-mono text-[12px] font-semibold text-blue-600 hover:underline dark:text-blue-400"
+        >
+          {i.rx_id} <ArrowUpRight className="h-3 w-3" />
+        </button>
+      ) },
     { key: "member", header: "Member", width: "150px",
       render: (i) => <span className="text-[13px]">{i.patient_name}</span> },
     { key: "drug", header: "Drug",
@@ -176,7 +186,49 @@ function TPAPendQueueInner() {
       </div>
       <DataTable columns={columns} rows={visibleItems} rowKey={(i) => i.rx_id}
         emptyMessage="No claims currently pended. Claims held from employer ACH payment sweep will appear here."
-        onRowClick={(i) => window.location.href = `/console/prescriptions/${i.rx_id}`} />
+        onRowClick={setSelected} />
+
+      <DetailDrawer
+        open={!!selected}
+        onClose={() => setSelected(null)}
+        title={selected ? `Case ${selected.rx_id}` : "Case"}
+        subtitle={selected ? `${selected.drug_name} · ${selected.patient_name} · ${selected.employer_name}` : undefined}
+        actions={selected ? (
+          <Link
+            href={`/console/prescriptions/${selected.rx_id}`}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-2 text-[12px] font-semibold text-white hover:bg-indigo-700"
+          >
+            Open full evidence record <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
+        ) : undefined}
+      >
+        {selected && (
+          <div className="space-y-5">
+            <ContractIntegrityPanel compact input={{
+              id: selected.rx_id,
+              drugName: selected.drug_name,
+              billedAmount: selected.billed_amount,
+              riskScore: selected.risk_score,
+              employerName: selected.employer_name,
+            }} />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <FieldGroup title="Case context">
+                <Field label="Member" value={selected.patient_name} />
+                <Field label="Plan sponsor" value={selected.employer_name} />
+                <Field label="Drug" value={selected.drug_name} />
+                <Field label="Prescriber" value={selected.prescriber} />
+              </FieldGroup>
+              <FieldGroup title="Decision controls">
+                <Field label="Disposition" value={selected.disposition} mono />
+                <Field label="Hold" value={selected.hold_type.replace("_", " ")} />
+                <Field label="Risk" value={`${Math.round(selected.risk_score * 100)}/100`} mono />
+                <Field label="Independent signals" value={selected.flag_count} mono />
+                <Field label="SLA" value={selected.sla_remaining_hours == null ? "Manual resolution" : selected.breach_status === "overdue" ? `${Math.abs(selected.sla_remaining_hours)}h overdue` : `${selected.sla_remaining_hours}h remaining`} />
+              </FieldGroup>
+            </div>
+          </div>
+        )}
+      </DetailDrawer>
     </div>
   );
 }

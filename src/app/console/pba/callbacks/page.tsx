@@ -9,6 +9,7 @@ import { TableSkeleton } from "@/components/ui/Skeleton";
 import { Send, ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
 import { PbaCallbackLanes } from "@/components/dashboard/PbaCharts";
+import ContractIntegrityPanel from "@/components/prescriptions/ContractIntegrityPanel";
 
 interface Callback {
   rx_id: string;
@@ -161,6 +162,11 @@ export default function PBACallbacksPage() {
       >
         {selected && (
           <>
+            <ContractIntegrityPanel compact input={{
+              id: selected.rx_id,
+              drugName: selected.drug_name,
+              riskScore: selected.callback_priority === "high" ? 88 : 62,
+            }} />
             <FieldGroup title="Callback Context">
               <Field label="Rx ID" value={selected.rx_id} mono />
               <Field label="Drug" value={selected.drug_name} />

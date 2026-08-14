@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useReveal } from "./useReveal";
 
 const steps = [
-  { title: "Script arrives", desc: "The e-prescription and the full record arrive together." },
-  { title: "Rules & guidelines", desc: "Dosing, interactions, FDA labels. Every flag cites its source." },
-  { title: "Axeris reasoning", desc: "Labs, genetics, allergies, and history for this exact patient." },
-  { title: "Anomaly check", desc: "Outliers, refill games, and abuse patterns surface instantly." },
-  { title: "Verdict", desc: "Pays, swapped for an equal, or held for a human. In seconds." },
+  { title: "Terms arrive", desc: "The PBM contract, benefit design, eligibility, and claim arrive together." },
+  { title: "Economics rebuilt", desc: "Allowed price, acquisition benchmark, MAC history, and rebate terms reconcile." },
+  { title: "Member context", desc: "Clinical safety, eligibility, accumulator, and plan rules stay attached to the case." },
+  { title: "Integrity checks", desc: "Spread, steering, channel leakage, fraud, and design defects surface instantly." },
+  { title: "Evidence-backed verdict", desc: "Pay, recover, swap, dispute, or hold—with the source trail attached." },
 ];
 
 /* slab positions cascading down-right — stretched diagonally so the figure
@@ -46,10 +46,10 @@ export default function ValueProp() {
     <section ref={ref} className="py-[72px]">
       <div className="container-wide">
         <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[20ch] mb-3">
-          One quiet layer between prescribing and payment.
+          One quiet layer between every contract, claim, and payment.
         </h2>
         <p className="reveal reveal-1 text-[1.05rem] text-[var(--muted)] max-w-[480px] leading-[1.5]">
-          Every script walks these five steps before a dollar moves.
+          Every claim walks these five steps before a dollar moves.
         </p>
 
         {/* phones get a clean stacked list — the SVG's labels are unreadable that small */}
@@ -69,7 +69,7 @@ export default function ValueProp() {
         <div className="reveal reveal-2 mt-4 select-none hidden sm:block" onMouseLeave={() => setHovering(false)}>
           <svg viewBox="0 0 1200 630" className="w-full mx-auto block" role="img"
                style={{ maxHeight: "70vh", height: "auto" }}
-               aria-label="Five isometric steps: script arrives, rules and guidelines, Axeris reasoning, anomaly check, verdict">
+               aria-label="Five isometric steps: contract terms, claim economics, member context, integrity checks, evidence-backed verdict">
             {POS.map((p, i) => {
               const l = LABEL[i];
               const isActive = i === active;
@@ -118,7 +118,7 @@ export default function ValueProp() {
         <div className="flex flex-wrap gap-x-14 gap-y-5 mt-9 sm:mt-2">
           <div className="reveal">
             <span className="num text-[2.2rem] text-[var(--ink)]">50+</span>
-            <span className="text-[0.9rem] text-[var(--muted)] ml-3">clinical signals per script</span>
+            <span className="text-[0.9rem] text-[var(--muted)] ml-3">contract, administrative, and clinical signals</span>
           </div>
           <div className="reveal reveal-1">
             <span className="num text-[2.2rem] text-[var(--ink)]">99.4%</span>

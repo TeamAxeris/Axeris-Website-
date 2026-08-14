@@ -45,27 +45,27 @@ const TPA_SECTIONS: NavSection[] = [
   {
     label: "Contract Integrity",
     items: [
-      { href: "/console/tpa/pbm-audit", label: "PBM Pricing Audit", icon: Receipt },
-      { href: "/console/tpa/mac-repricing", label: "Generic Pricing", icon: LineChart },
+      { href: "/console/tpa/pbm-audit", label: "Spread & Rebates Audit", icon: Receipt },
+      { href: "/console/tpa/mac-repricing", label: "MAC Repricing", icon: LineChart },
       { href: "/console/tpa/conflict-audit", label: "Conflict of Interest", icon: Landmark },
-      { href: "/console/tpa/dtc-leakage", label: "Direct Channels", icon: ShoppingBag },
+      { href: "/console/tpa/dtc-leakage", label: "DTC Leakage", icon: ShoppingBag },
       { href: "/console/tpa/plan-design", label: "Plan Design", icon: SlidersHorizontal },
     ],
   },
   {
     label: "Cost Containment",
     items: [
-      { href: "/console/tpa/glp1-watch", label: "GLP-1 Oversight", icon: Syringe },
-      { href: "/console/tpa/eligibility-leakage", label: "Eligibility", icon: UserMinus },
+      { href: "/console/tpa/glp1-watch", label: "GLP-1 Watch", icon: Syringe },
+      { href: "/console/tpa/eligibility-leakage", label: "Eligibility Leakage", icon: UserMinus },
       { href: "/console/tpa/high-cost-forecast", label: "Stop-Loss Forecast", icon: Gauge },
-      { href: "/console/tpa/pa-gold-card", label: "Prior Authorization", icon: BadgeCheck },
+      { href: "/console/tpa/pa-gold-card", label: "Prior Auth & Gold Card", icon: BadgeCheck },
     ],
   },
   {
     label: "Clinical Programs",
     items: [
-      { href: "/console/tpa/med-optimization", label: "Medication Review", icon: ClipboardCheck },
-      { href: "/console/tpa/adherence", label: "Adherence", icon: CalendarCheck },
+      { href: "/console/tpa/med-optimization", label: "Med Optimization", icon: ClipboardCheck },
+      { href: "/console/tpa/adherence", label: "Adherence (PDC)", icon: CalendarCheck },
     ],
   },
   {

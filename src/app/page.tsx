@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BuiltBy from "@/components/BuiltBy";
 import Products from "@/components/Products";
+import ContractIntegrity from "@/components/ContractIntegrity";
 import ValueProp from "@/components/ValueProp";
 import Press from "@/components/Press";
 import Metrics from "@/components/Metrics";
@@ -20,6 +21,7 @@ export default function Home() {
         <BuiltBy />
         <Press />
         <Products />
+        <ContractIntegrity />
         <ValueProp />
         <Metrics />
         <Integrations />

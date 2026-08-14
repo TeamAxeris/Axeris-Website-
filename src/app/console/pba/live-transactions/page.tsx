@@ -8,6 +8,7 @@ import { DataSourceList } from "@/components/ui/DataSourceBadge";
 import clsx from "clsx";
 import { TableSkeleton } from "@/components/ui/Skeleton";
 import { PbaRealtimePulse } from "@/components/dashboard/PbaCharts";
+import ContractIntegrityPanel from "@/components/prescriptions/ContractIntegrityPanel";
 
 export default function PBALiveTransactionsPage() {
   const [data, setData] = useState<any>(null);
@@ -128,13 +129,20 @@ export default function PBALiveTransactionsPage() {
       >
         {detail && (
           <>
+            <ContractIntegrityPanel compact input={{
+              id: detail.rx_id,
+              drugName: detail.drug?.generic || detail.drug?.brand,
+              quantity: Number(detail.fields?.["442-E7"] || detail.quantity || 30),
+              billedAmount: Number(detail.fields?.["430-DU"] || detail.allowed_amount || 0),
+              riskScore: detail.risk_score,
+            }} />
             <FieldGroup title="NCPDP D.0 Transaction">
               <Field label="Rx ID" value={detail.rx_id} mono />
               <Field label="Transaction Code" value={detail.ncpdp_transaction_code} mono />
               <Field label="Status" value={detail.transaction_status} />
               {detail.reject_code && <Field label="Reject Code (511-FB)" value={`${detail.reject_code} · ${detail.reject_description}`} mono />}
               <Field label="Latency" value={`${detail.latency_ms}ms`} mono />
-              <Field label="Operating Mode" value={detail.operating_mode} />
+              <Field label="Operating Mode" value="PBA · Real-time" />
             </FieldGroup>
 
             <FieldGroup title="NCPDP Field Detail">
