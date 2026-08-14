@@ -14,7 +14,7 @@ export default function Metrics() {
   const ref = useReveal();
 
   return (
-    <section ref={ref} id="how-it-works" className="py-[72px]" style={{ borderTop: "1px solid var(--line)" }}>
+    <section ref={ref} id="how-it-works" className="py-[72px]" style={{ borderTop: "4px solid rgba(23, 20, 13, 0.13)" }}>
       <div className="container-wide">
         <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[18ch] mb-11">
           One claim, audited three ways at once.
