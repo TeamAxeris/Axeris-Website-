@@ -24,18 +24,7 @@ export default function LoginScreen() {
     try {
       await login(email, password);
     } catch {
-      setError("Authentication failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDemoLogin = async () => {
-    setEmail("reviewer@axeris-health.com");
-    setPassword("demo2025");
-    setLoading(true);
-    try {
-      await login("reviewer@axeris-health.com", "demo2025");
+      setError("The username or password is not recognized.");
     } finally {
       setLoading(false);
     }
@@ -65,25 +54,22 @@ export default function LoginScreen() {
             <AxerisLogo size={34} />
             <span className="text-[1.5rem] font-medium tracking-[-0.02em] text-[#17140d]">Axeris</span>
           </div>
-          <h1 className="text-[2rem] leading-[1.1] font-normal tracking-[-0.02em] text-[#17140d]">
-            The clinical layer,
-            <br />
-            signed in.
-          </h1>
-          <p className="text-sm text-[#7c766c] mt-3">AI clinical decision support for prescription review.</p>
+          <h1 className="text-[2rem] leading-[1.1] font-normal tracking-[-0.02em] text-[#17140d]">Welcome to Axeris.</h1>
+          <p className="text-sm text-[#7c766c] mt-3">Sign in to the clinical decision support workspace.</p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-xs text-[#5f5a50] block mb-1.5">Email</label>
+            <label className="text-xs text-[#5f5a50] block mb-1.5">Username</label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#a8a196]" />
               <input
-                type="email"
+                type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@axeris-health.com"
+                placeholder="access@axeris"
+                autoComplete="username"
                 className="w-full bg-[#fbfaf6] border border-[#e4dfd4] rounded-[9px] pl-10 pr-4 py-2.5 text-sm text-[#17140d] placeholder-[#a8a196] focus:outline-none focus:ring-2 focus:ring-[#2f2fe6] focus:border-transparent transition-all"
               />
             </div>
@@ -98,6 +84,7 @@ export default function LoginScreen() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
+                autoComplete="current-password"
                 className="w-full bg-[#fbfaf6] border border-[#e4dfd4] rounded-[9px] pl-10 pr-10 py-2.5 text-sm text-[#17140d] placeholder-[#a8a196] focus:outline-none focus:ring-2 focus:ring-[#2f2fe6] focus:border-transparent transition-all"
               />
               <button
@@ -131,14 +118,7 @@ export default function LoginScreen() {
             )}
           </button>
 
-          <button
-            type="button"
-            onClick={handleDemoLogin}
-            disabled={loading}
-            className="w-full bg-transparent hover:bg-[#efece4] text-[#17140d] text-sm font-medium py-2.5 rounded-[9px] transition-all border border-[#e4dfd4] disabled:opacity-50"
-          >
-            Enter the demo
-          </button>
+          <p className="text-center text-[11px] text-[#a8a196]">Axeris demo workspace · synthetic data</p>
         </form>
 
         {/* Footer */}

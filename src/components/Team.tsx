@@ -6,7 +6,7 @@ import { useReveal } from "./useReveal";
 const founders = [
   { name: "Adan Eftekhari", title: "Chief Executive Officer", image: "/team/adan-eftekhari-2.jpg", school: "Harvard University", field: "Biology & Economics", linkedin: "https://www.linkedin.com/in/adan-eftekhari/" },
   { name: "Kareem Malhis", title: "Chief Product Officer", image: "/team/kareem-malhis.jpg", school: "Johns Hopkins University", field: "Electrical & Computer Engineering", linkedin: "https://www.linkedin.com/in/kareem-malhis/" },
-  { name: "Khartik Uppalapati", title: "Chief Technology Officer", image: "/team/khartik-uppalapati.jpg", school: "University of Chicago", field: "CS, Econ & Biological Chemistry", linkedin: "https://www.linkedin.com/in/khartik-uppalapati/" },
+  { name: "Khartik Uppalapati", title: "Chief Technology Officer", image: "/team/khartik-uppalapati.jpg", school: "University of Chicago", field: "CS, Economics & Biological Chemistry", linkedin: "https://www.linkedin.com/in/khartik-uppalapati/" },
 ];
 
 export default function Team() {

@@ -16,6 +16,9 @@ interface AuthContextType {
   logout: () => void;
 }
 
+export const DEMO_USERNAME = "access@axeris";
+export const DEMO_PASSWORD = "EvidenceFirst!2026";
+
 const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
@@ -33,7 +36,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (isDemoEntry) {
       const demoUser: User = {
         name: "Clinical Reviewer",
-        email: "reviewer@axeris-health.com",
+        email: DEMO_USERNAME,
         role: "Senior Clinical Reviewer",
         avatar: "R",
       };
@@ -55,11 +58,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setChecked(true);
   }, []);
 
-  const login = async (email: string, _password: string): Promise<boolean> => {
-    // Simulated auth · any non-empty credentials work
+  const login = async (email: string, password: string): Promise<boolean> => {
     await new Promise((r) => setTimeout(r, 1200));
+    if (email !== DEMO_USERNAME || password !== DEMO_PASSWORD) {
+      throw new Error("Invalid credentials");
+    }
     const mockUser: User = {
-      name: email.includes("@") ? email.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) : "Clinical Reviewer",
+      name: "Clinical Reviewer",
       email,
       role: "Senior Clinical Reviewer",
       avatar: email.charAt(0).toUpperCase(),
