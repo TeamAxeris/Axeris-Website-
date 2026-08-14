@@ -20,9 +20,6 @@ export default function ContractIntegrity() {
       <div className="container-wide">
         <div className="grid items-end gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="reveal">
-            <div className="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.18em]" style={{ color: "#4246d8" }}>
-              Administrative intelligence
-            </div>
             <h2 className="headline max-w-[15ch] text-[2rem] sm:text-[3.35rem]" style={{ color: "#191c33" }}>
               The prescription is only half the audit.
             </h2>

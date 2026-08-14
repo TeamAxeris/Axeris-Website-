@@ -93,8 +93,8 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
 }
-.btn-primary { color: #fff; background: var(--blue); }
-.btn-primary:hover { transform: translateY(-2px); background: #2428c5; box-shadow: 0 14px 30px rgba(47,47,230,0.2); }
+.btn-primary { color: #fff; background: var(--ink); }
+.btn-primary:hover { transform: translateY(-2px); background: #000; box-shadow: 0 14px 30px rgba(20,18,12,0.2); }
 .btn-ghost { color: var(--ink); background: transparent; border: 1px solid var(--line); }
 .btn-ghost:hover { border-color: rgba(23,20,13,0.28); transform: translateY(-2px); }
 
