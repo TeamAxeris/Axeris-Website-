@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { DEMO_REQUEST_MAILTO } from "@/lib/contact";
 
 const links = [
   { label: "Problem", href: "#problem" },
@@ -43,8 +44,8 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <a href="/console/tpa/dashboard?demo=1" className="btn btn-primary !py-2.5 !px-5 !text-[0.88rem]">
-            Try Live Demo
+          <a href={DEMO_REQUEST_MAILTO} className="btn btn-primary !py-2.5 !px-5 !text-[0.88rem]">
+            Request a Demo
           </a>
         </div>
 
@@ -60,7 +61,7 @@ export default function Navbar() {
           {links.map((l) => (
             <Link key={l.label} href={l.href} onClick={() => setMobileOpen(false)} className="block text-[1rem] text-[var(--ink-soft)] no-underline">{l.label}</Link>
           ))}
-          <a href="/console/tpa/dashboard?demo=1" className="btn btn-primary mt-2">Try Live Demo</a>
+          <a href={DEMO_REQUEST_MAILTO} className="btn btn-primary mt-2">Request a Demo</a>
         </div>
       )}
     </nav>
