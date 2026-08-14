@@ -16,6 +16,10 @@ interface AuthContextType {
   logout: () => void;
 }
 
+export const DEMO_USERNAME = "access@axeris";
+export const DEMO_PASSWORD = "EvidenceFirst!2026";
+const AUTH_STORAGE_KEY = "axeris_auth_v2";
+
 const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
@@ -29,22 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    const isDemoEntry = new URLSearchParams(window.location.search).get("demo") === "1";
-    if (isDemoEntry) {
-      const demoUser: User = {
-        name: "Clinical Reviewer",
-        email: "reviewer@axeris-health.com",
-        role: "Senior Clinical Reviewer",
-        avatar: "R",
-      };
-      setUser(demoUser);
-      setIsAuthenticated(true);
-      localStorage.setItem("axeris_auth", JSON.stringify(demoUser));
-      setChecked(true);
-      return;
-    }
-
-    const stored = localStorage.getItem("axeris_auth");
+    const stored = localStorage.getItem(AUTH_STORAGE_KEY);
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -55,24 +44,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setChecked(true);
   }, []);
 
-  const login = async (email: string, _password: string): Promise<boolean> => {
-    // Simulated auth · any non-empty credentials work
+  const login = async (email: string, password: string): Promise<boolean> => {
     await new Promise((r) => setTimeout(r, 1200));
+    if (email !== DEMO_USERNAME || password !== DEMO_PASSWORD) {
+      throw new Error("Invalid credentials");
+    }
     const mockUser: User = {
-      name: email.includes("@") ? email.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, c => c.toUpperCase()) : "Clinical Reviewer",
+      name: "Clinical Reviewer",
       email,
       role: "Senior Clinical Reviewer",
       avatar: email.charAt(0).toUpperCase(),
     };
     setUser(mockUser);
     setIsAuthenticated(true);
-    localStorage.setItem("axeris_auth", JSON.stringify(mockUser));
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(mockUser));
     return true;
   };
 
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
+    localStorage.removeItem(AUTH_STORAGE_KEY);
     localStorage.removeItem("axeris_auth");
   };
 
