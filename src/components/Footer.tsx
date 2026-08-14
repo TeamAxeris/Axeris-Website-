@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { DEMO_REQUEST_URL } from "@/lib/contact";
+import { CONTACT_URL, DEMO_REQUEST_URL } from "@/lib/contact";
 
 const nav = [
   { label: "Problem", href: "#problem" },
@@ -9,7 +9,7 @@ const nav = [
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },
   { label: "Request Demo", href: DEMO_REQUEST_URL },
-  { label: "Contact", href: "https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" },
+  { label: "Contact", href: CONTACT_URL },
 ];
 
 export default function Footer() {
@@ -22,8 +22,8 @@ export default function Footer() {
             <p className="text-[0.95rem] text-[var(--ink)]">The independent contract, claims, and clinical audit layer</p>
             <p className="text-[0.85rem] text-[var(--muted)] mt-1">&copy; {new Date().getFullYear()} Axeris. All rights reserved.</p>
           </div>
-          <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@axeris-health.com&su=Axeris" target="_blank" rel="noopener noreferrer" className="text-[0.9rem] text-[var(--ink)] no-underline border-b border-[var(--ink)] self-start pb-0.5 hover:text-[var(--blue)] hover:border-[var(--blue)] transition-colors">
-            CONTACT@AXERIS-HEALTH.COM
+          <Link href={CONTACT_URL} className="text-[0.9rem] text-[var(--ink)] no-underline border-b border-[var(--ink)] self-start pb-0.5 hover:text-[var(--blue)] hover:border-[var(--blue)] transition-colors">
+            INFO@AXERIS.COM
           </Link>
         </div>
       </div>
