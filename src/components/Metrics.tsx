@@ -3,12 +3,12 @@
 import { useReveal } from "./useReveal";
 
 const engines = [
-  { n: "01", title: "Rules & guidelines", desc: "Guidelines, FDA labels, dosing, interactions. Every flag cites the rule and the source." },
-  { n: "02", title: "Anomaly detection", desc: "Learns normal prescribing, then flags the outliers and known abuse patterns." },
-  { n: "03", title: "Patient reasoning", desc: "Weighs labs, genetics, allergies, and history so alternatives stay safe." },
+  { n: "01", title: "Contract & pricing", desc: "Tests spread, rebate guarantees, MAC changes, fees, and acquisition benchmarks at claim level." },
+  { n: "02", title: "Plan & fiduciary", desc: "Finds ownership steering, eligibility gaps, accumulator defects, channel leakage, and plan-design failures." },
+  { n: "03", title: "Clinical & patient", desc: "Keeps dosing, interactions, FDA guidance, labs, genetics, allergies, and adherence in the same case." },
 ];
 
-const sources = ["EHR data", "Claims history", "Lab results", "Medication history", "Genetic data", "Formulary design", "Organ function", "Titration needs", "Drug interactions", "Adherence"];
+const sources = ["PBM contract", "NADAC + MAC history", "Rebate guarantees", "Claims 835", "Ownership data", "Eligibility spans", "Plan design", "Accumulator data", "FDA labels", "EHR + labs"];
 
 export default function Metrics() {
   const ref = useReveal();
@@ -17,7 +17,7 @@ export default function Metrics() {
     <section ref={ref} id="how-it-works" className="py-[72px]" style={{ borderTop: "1px solid var(--line)" }}>
       <div className="container-wide">
         <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[18ch] mb-11">
-          One prescription, read three ways at once.
+          One claim, audited three ways at once.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10">
@@ -33,7 +33,7 @@ export default function Metrics() {
         </div>
 
         <div className="reveal mt-14">
-          <p className="text-[0.82rem] text-[var(--muted)] mb-2">50+ signals on every script, including</p>
+          <p className="text-[0.82rem] text-[var(--muted)] mb-2">50+ contract, administrative, and clinical signals, including</p>
           <SignalBoard />
         </div>
       </div>

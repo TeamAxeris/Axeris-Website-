@@ -8,6 +8,7 @@ import FlagBadge from "@/components/prescriptions/FlagBadge";
 import DispositionBadge from "@/components/prescriptions/DispositionBadge";
 import Header from "@/components/layout/Header";
 import ConfirmModal from "@/components/ui/ConfirmModal";
+import ContractIntegrityPanel from "@/components/prescriptions/ContractIntegrityPanel";
 import { DetailSkeleton } from "@/components/ui/Skeleton";
 import { useToast } from "@/context/ToastContext";
 import { useMode } from "@/context/ModeContext";
@@ -297,6 +298,16 @@ export default function PrescriptionDetailPage() {
             </div>
           )}
 
+        </div>
+
+        <div className="no-print mb-6 animate-fade-in-up" style={{ animationDelay: "80ms" }}>
+          <ContractIntegrityPanel input={{
+            id: rx.id,
+            drugName: rx.drug_name,
+            quantity: rx.quantity,
+            daysSupply: rx.days_supply,
+            riskScore: rx.risk_score,
+          }} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

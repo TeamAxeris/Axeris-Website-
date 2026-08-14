@@ -34,10 +34,10 @@ export default function Integrations() {
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16">
           <div className="reveal">
             <h2 className="headline text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[14ch] mb-5">
-              Built for payers who want an independent read.
+              Built for payers who want an independent read of every contract and claim.
             </h2>
             <p className="text-[1.02rem] text-[var(--muted)] max-w-[400px] leading-[1.5]">
-              We take a share of the savings we verify. If we do not save money, you do not pay.
+              Axeris turns contract terms into executable checks, attaches the evidence to each case, and takes a share only of savings we verify.
             </p>
           </div>
 

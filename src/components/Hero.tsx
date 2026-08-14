@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="container-wide w-full relative z-[2] pb-[52px] sm:pb-[68px] pt-[120px] sm:pt-[140px] pointer-events-none">
         <h1 className="headline text-[1.9rem] sm:text-[3.3rem] lg:text-[3.8rem] text-[var(--ink)] mb-8"
             style={{ animation: "fadeInUp 0.8s ease both" }}>
-          Unsafe, wasteful prescriptions,<br className="hidden sm:inline" /> stopped before they&apos;re paid.
+          Every prescription. Every contract.<br className="hidden sm:inline" /> Every plan dollar, independently checked.
         </h1>
         <div className="flex items-center gap-3 flex-wrap pointer-events-auto" style={{ animation: "fadeInUp 0.8s ease 0.12s both" }}>
           <a href={DEMO_REQUEST_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">

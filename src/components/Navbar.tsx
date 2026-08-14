@@ -7,6 +7,7 @@ import { DEMO_REQUEST_URL } from "@/lib/contact";
 
 const links = [
   { label: "Problem", href: "#problem" },
+  { label: "Contract audit", href: "#contract-integrity" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Why Axeris", href: "#why-axeris" },
   { label: "Team", href: "#team" },

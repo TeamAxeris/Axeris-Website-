@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { TableSkeleton } from "@/components/ui/Skeleton";
 import { demoFetch } from "@/lib/demoFetch";
 import { PbaRejectPareto } from "@/components/dashboard/PbaCharts";
+import ContractIntegrityPanel from "@/components/prescriptions/ContractIntegrityPanel";
 
 export default function PBANCPDPRejectsPage() {
   const [data, setData] = useState<any>(null);
@@ -96,6 +97,13 @@ export default function PBANCPDPRejectsPage() {
       >
         {detail && (
           <>
+            <ContractIntegrityPanel compact input={{
+              id: detail.rx_id,
+              drugName: detail.drug?.generic || detail.drug?.brand || selected?.drug_name,
+              quantity: Number(detail.fields?.["442-E7"] || detail.quantity || 30),
+              billedAmount: Number(detail.fields?.["430-DU"] || detail.allowed_amount || 0),
+              riskScore: detail.risk_score,
+            }} />
             <FieldGroup title="Reject">
               <Field label="Reject Code (511-FB)" value={`${detail.reject_code} · ${detail.reject_description}`} mono />
               <Field label="Latency" value={`${detail.latency_ms}ms`} mono />

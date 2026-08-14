@@ -4,20 +4,20 @@ import { useReveal } from "./useReveal";
 
 /* problems as bold-lead statements, Trust-style */
 const problems = [
-  { lead: "Inappropriate prescribing.", rest: "Wrong drug, unsafe dose, dangerous combinations." },
-  { lead: "Wasteful spending.", rest: "Costly brands where generics exist." },
-  { lead: "Fraud and abuse.", rest: "Doctor shopping, collusion, invented diagnoses." },
-  { lead: "Prior-auth burden.", rest: "39 requests per physician, per week." },
+  { lead: "PBM contract leakage.", rest: "Spread pricing, missed rebates, hidden fees, and unilateral MAC resets." },
+  { lead: "Plan design leakage.", rest: "Eligibility, accumulator, channel, copay, and biosimilar defects." },
+  { lead: "Clinical risk.", rest: "Wrong drug, unsafe dose, dangerous combinations, and avoidable waste." },
+  { lead: "Fraud and conflicts.", rest: "Doctor shopping, affiliated steering, collusion, and invented diagnoses." },
 ];
 
 /* the same problems, shown as a live claims feed — illustrative numbers */
 const feed = [
-  { name: "Lisinopril 20 mg", note: "pays", amt: "$4", c: "var(--green)" },
-  { name: "Crestor 20 mg", note: "generic exists", amt: "$318 → $9", c: "var(--amber)" },
+  { name: "Brand claim", note: "spread above benchmark", amt: "+$227", c: "var(--red)" },
+  { name: "Generic fill", note: "MAC reset without cost move", amt: "+38%", c: "var(--amber)" },
+  { name: "Specialty route", note: "PBM-owned channel", amt: "review", c: "var(--amber)" },
+  { name: "DTC purchase", note: "accumulator not credited", amt: "$164", c: "var(--red)" },
   { name: "Oxycodone 30 mg", note: "third prescriber this month", amt: "held", c: "var(--red)" },
-  { name: "Duloxetine 60 mg", note: "pays", amt: "$16", c: "var(--green)" },
-  { name: "Humira 40 mg", note: "biosimilar is equal", amt: "$6,922 → $1,180", c: "var(--amber)" },
-  { name: "Atorvastatin 40 mg", note: "pays", amt: "$12", c: "var(--green)" },
+  { name: "Rebate guarantee", note: "credit reconciled", amt: "$44", c: "var(--green)" },
 ];
 
 export default function Products() {
@@ -27,7 +27,7 @@ export default function Products() {
     <section ref={ref} id="problem" className="py-[72px]" style={{ background: "var(--bg-warm)" }}>
       <div className="container-wide">
         <h2 className="headline reveal text-[1.9rem] sm:text-[3.3rem] text-[var(--ink)] max-w-[16ch] mb-11">
-          What slips through costs lives. And billions.
+          What slips through costs lives. And plan dollars.
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-x-16 gap-y-12 items-start">
@@ -45,7 +45,7 @@ export default function Products() {
           <div className="reveal reveal-2 rounded-2xl overflow-hidden"
                style={{ background: "var(--paper)", border: "1px solid var(--line)", boxShadow: "0 18px 50px rgba(20,18,12,0.07)" }}>
             <div className="flex items-baseline justify-between px-6 pt-5 pb-4">
-              <span className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-[var(--muted)]">Claims feed</span>
+              <span className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-[var(--muted)]">Independent audit feed</span>
               <span className="text-[0.7rem] text-[var(--faint)]">illustrative</span>
             </div>
             <div>
@@ -59,8 +59,8 @@ export default function Products() {
               ))}
             </div>
             <div className="flex items-baseline justify-between px-6 py-4" style={{ borderTop: "1px solid var(--line)", background: "var(--bg)" }}>
-              <span className="text-[0.9rem] text-[var(--muted)]">Caught before payment</span>
-              <span className="num text-[1.35rem] text-[var(--ink)]">$6,051</span>
+              <span className="text-[0.9rem] text-[var(--muted)]">Protected before payment</span>
+              <span className="num text-[1.35rem] text-[var(--ink)]">$1.02M</span>
             </div>
           </div>
         </div>

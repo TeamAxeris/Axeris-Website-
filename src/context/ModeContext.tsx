@@ -71,7 +71,7 @@ export const PBA_CONFIG: ModeConfig = {
   shortDesc: "Real-time NCPDP D.0 pre-dispense intervention",
   primaryAudience: "Transparent PBMs · pass-through pricing",
   latency: "Real-time · <200ms p95",
-  output: "Clinical safety · pre-dispense block",
+  output: "Clinical safety · transparent economics · pre-dispense block",
   accentColor: "purple",
   accentBg: "bg-purple-600",
   accentText: "text-purple-600 dark:text-purple-400",
@@ -101,10 +101,18 @@ export function ModeProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Route intent wins over an old browser preference. Public entry points
-    // and demo links always open the Plan Sponsor console; direct /pba links
-    // still select the real-time adjudication navigation automatically.
-    setModeState(pathname.startsWith("/console/pba") ? "PBA" : "TPA");
+    // Explicit mode routes always win. Shared record routes (Members, Claims,
+    // Prescribers, Audit, Settings) retain the mode the user came from instead
+    // of silently snapping PBA reviewers back to the TPA navigation.
+    let nextMode: AxerisMode = "TPA";
+    if (pathname.startsWith("/console/pba")) nextMode = "PBA";
+    else if (pathname.startsWith("/console/tpa")) nextMode = "TPA";
+    else {
+      const saved = localStorage.getItem("axeris-mode");
+      if (saved === "PBA" || saved === "TPA") nextMode = saved;
+    }
+    setModeState(nextMode);
+    localStorage.setItem("axeris-mode", nextMode);
     setHydrated(true);
   }, [pathname]);
 
